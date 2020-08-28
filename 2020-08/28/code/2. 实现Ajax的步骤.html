@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="createXMLHttpRequestObject.js"></script>
+</head>
+
+<body>
+    <button id="btn">点击获取</button>
+    <p></p>
+    <script>
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            document.getElementsByTagName("p")[0].textContent = '获取中....'
+            // 实现Ajax异步交互
+            // 1. 创建核心对象
+            var xhr = createXMLHttpRequest()
+            // 2. 调用核心对象的open方法
+            // 作用 - 与服务器建立连接
+            // 参数参考 https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/open
+            // 通常情况下只会使用前两个参数，分别为请求方式和请求地址
+            xhr.open('get', 'https://v1.hitokoto.cn?c=c')
+            // 3. 调用核心对象的send方法
+            // 作用 - 将客户端页面的数据发送给服务器端
+            // 参数参考 https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/send
+            // 如果是get请求，则需要传输null
+            xhr.send(null)
+            // 4. 利用核心对象的onreadystatechange事件监听服务器端的通信状态
+            // 当接收到服务器端处理完毕的信号
+            // 参考连接 https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/readyState
+            xhr.onreadystatechange = function () {
+                // 通过核心对象的属性readyState监听通信状态
+                //readyState=4：响应的内容解析完毕，可以在客户端使用了--完成
+                // 0 未初始化
+                // 1 open()方法被调用
+                // 2 send()方法被调用
+                // 3 正在响应
+                // 4 响应已完毕
+                switch (xhr.readyState) {
+                    case 0:
+                        console.log(0, "被调用了");
+                        break
+                    case 1:
+                        console.log(1, "被调用了");
+                        break
+                    case 2:
+                        console.log(2, "被调用了");
+                        break
+                    case 3:
+                        console.log(3, "被调用了");
+                        break
+                    case 4:
+                        // 接收服务器端返回的处理结果（responseText）
+                        // 5. 将接收到的结果更新到HTML页面中
+                        console.log(xhr.responseText);
+                        var data = JSON.parse(xhr.responseText)
+                        document.getElementsByTagName("p")[0].textContent = data.hitokoto
+                        break
+                    default:
+                        console.log("纳尼？");
+                }
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
