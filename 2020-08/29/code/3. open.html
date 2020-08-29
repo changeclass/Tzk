@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="createXMLHttpRequestObject.js"></script>
+</head>
+
+<body>
+    <button id="btn">点击获取</button>
+    <p></p>
+    <script>
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            document.getElementsByTagName("p")[0].textContent = '获取中....'
+            var xhr = createXMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(4, "被调用了");
+                    console.log("响应状态码：", xhr.status);
+                    var data = JSON.parse(xhr.responseText)
+                    document.getElementsByTagName("p")[0].textContent = data.hitokoto
+                }
+            }
+            /*
+                GET:send数据只能是null
+                POST:send数据为请求的数据
+            */
+
+            xhr.open('post', 'https://v1.hitokoto.cn/')
+            /*
+                当open的方式为post时，那么send传入的内容为请求的数据。
+            */
+            //设置请求头(POST)
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+            xhr.send("c=c")
+
+        })
+
+    </script>
+</body>
+
+</html>

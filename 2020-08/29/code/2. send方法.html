@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="createXMLHttpRequestObject.js"></script>
+</head>
+
+<body>
+    <button id="btn">点击获取</button>
+    <p></p>
+    <script>
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            document.getElementsByTagName("p")[0].textContent = '获取中....'
+            var xhr = createXMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(4, "被调用了");
+                    console.log("响应状态码：", xhr.status);
+                    var data = JSON.parse(xhr.responseText)
+                    document.getElementsByTagName("p")[0].textContent = data.hitokoto
+                }
+            }
+
+            xhr.open('get', 'https://v1.hitokoto.cn?c=c')
+            /*
+                send(data) -- 不发送数据时固定为null
+                GET请求数据格式 ?key1=value1&key2=value2
+                    如果当前请求方式为GET或者HEAD那么请求数据只能是null
+                    请求数据与地址进行拼接例如：https://v1.hitokoto.cn?c=c
+            */
+            xhr.send(null)
+
+        })
+
+    </script>
+</body>
+
+</html>

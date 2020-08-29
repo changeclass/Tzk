@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="createXMLHttpRequestObject.js"></script>
+</head>
+
+<body>
+    <button id="btn">点击获取</button>
+    <p></p>
+    <script>
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click', function () {
+            // 1. 创建核心对象
+            var xhr = new createXMLHttpRequest()
+            // 2. 监听异步请求状态
+            xhr.onreadystatechange = function () {
+                if (xhr.status === 200 && xhr.readyState === 4) {
+                    // 当请求成功时执行的代码
+                    var text = JSON.parse(xhr.responseText)
+                    document.querySelector('p').textContent = text.hitokoto
+                }
+            }
+            // 设置请求方式及地址
+            xhr.open('get', 'https://v1.hitokoto.cn/')
+            // 设置发送数据
+            xhr.send(null)
+        })
+
+    </script>
+</body>
+
+</html>
