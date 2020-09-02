@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="createXMLHttpRequestObject.js"></script>
+</head>
+
+<body>
+    <button id="btn">11</button>
+    <p>请点击按钮获取</p>
+    <script>
+        document.getElementById('btn').addEventListener('click', function () {
+            // 1. 创建AJAX对象
+            var xhr = createXMLHttpRequest()
+            var obj = {
+                name: '1'
+            }
+            // 2. 监听事件
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    // 5. 处理数据
+                    var jsonObj = JSON.parse(xhr.responseText)
+                    for (key in jsonObj) {
+                        document.querySelector('p').textContent = `${key}:${jsonObj[key]}`
+                    }
+                }
+            }
+            // 3. 请求数据的方式及地址
+            xhr.open('get', 'server.json?name' + obj.name)
+            // 4. 发送的数据
+            xhr.send(null)
+        })
+
+    </script>
+</body>
+
+</html>

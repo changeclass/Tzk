@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <select id="province">
+
+    </select>
+    <select id="cities">
+        <option value="">---</option>
+    </select>
+    <select id="counties">
+        <option value="">---</option>
+    </select>
+    <script>
+        var xhr = createXMLHttpRequest()
+        var provinceElement = document.getElementById('province')
+        var cityElement = document.getElementById('cities')
+        var countiesElement = document.getElementById('counties')
+        var datas;
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = xhr.responseText
+                datas = JSON.parse(response)
+                for (var i = 0; i < datas.length; i++) {
+                    var data = datas[i]
+                    var opt = document.createElement('option')
+                    opt.setAttribute('value', data.province)
+                    opt.textContent = data.province
+                    provinceElement.appendChild(opt)
+                }
+            }
+        }
+        xhr.open('get', 'server1.json')
+        xhr.send(null)
+        // 为省份下拉列表绑定事件change
+        provinceElement.addEventListener('change', function () {
+            var cityOpts = cityElement.options
+            for (var k = 1; k < cityOpts.length; k++) {
+                cityElement.removeChild(cityOpts[k])
+                k--
+            }
+            // 选项信息
+            var opts = provinceElement.options
+            // 索引
+            var index = provinceElement.selectedIndex
+            var opt = opts.item(index)
+            // 省份信息
+            var provinceName = opt.getAttribute('value')
+            // 2. 根据省份信息获取城市信息
+            for (var i = 0; i < datas.length; i++) {
+                var data = datas[i]
+                var province = data.province
+                if (provinceName === province) {
+                    var cities = data.cities
+                    for (var j = 0; j < cities.length; j++) {
+                        var city = cities[j].city
+                        var opt = document.createElement('option')
+                        opt.setAttribute('value', city)
+                        opt.textContent = city
+                        cityElement.appendChild(opt)
+                    }
+                }
+            }
+        })
+        cityElement.addEventListener('change',function (){
+            var cityOpts = countiesElement.options
+            for (var k = 1; k < cityOpts.length; k++) {
+                countiesElement.removeChild(cityOpts[k])
+                k--
+            }
+            // 选项信息
+            var opts = provinceElement.options
+            // 索引
+            var index = provinceElement.selectedIndex
+            var opt = opts.item(index)
+            // 省份信息
+            var provinceName = opt.getAttribute('value')
+            // 获取城市信息
+            var cityIndex = cityElement.selectedIndex
+            var cityOpt = cityElement.options.item(cityIndex)
+            var cityName = cityOpt.getAttribute('value')
+
+            // 2. 根据省份信息获取城市信息
+            for (var i = 0; i < datas.length; i++) {
+                var data = datas[i]
+                var province = data.province
+                if (provinceName === province) {
+                    var cities = data.cities
+                    for (var j = 0; j < cities.length; j++) {
+                        if(cities[j].city===cityName){
+                            var counties = cities[j].counties
+
+                            for(var x=0;x < counties.length; x++){
+                                var city = counties[x]
+                                var opt = document.createElement('option')
+                                opt.setAttribute('value', city)
+                                opt.textContent = city
+                                countiesElement.appendChild(opt)
+                            }
+
+                        }
+                    }
+                }
+            }
+        })
+        function createXMLHttpRequest() {
+            var httpRequest;
+            if (window.XMLHttpRequest) {
+                // 适用于非IE浏览器
+                httpRequest = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                //   适用于IE浏览器
+                try {
+                    // IE 7+
+                    httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        //   IE 6-
+                        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) { }
+                }
+            }
+            return httpRequest;
+        }
+
+    </script>
+</body>
+
+</html>
