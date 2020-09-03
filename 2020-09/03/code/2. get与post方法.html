@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+</head>
+
+<body>
+    <button>按钮</button>
+    <p>这里是加载后的显示位置</p>
+    <script>
+        $("button").click(() => {
+            // get与post方法请求格式类似 参数分别为 请求地址，请求参数 回调函数 返回数据格式（默认json）
+            $.get('https://v1.hitokoto.cn/', { 'c': 'c' }, function (data) {
+                // 返回的是JSON对象
+                console.log(data);
+                $('p').text(data.hitokoto)
+            })
+        })
+    </script>
+</body>
+
+</html>

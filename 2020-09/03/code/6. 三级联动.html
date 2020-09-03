@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <select id="province"></select>
+    <select id="city">
+        <option value="">---</option>
+    </select>
+    <select id="county">
+        <option value="">---</option>
+    </select>
+    <script>
+        var $province = $('#province')
+        var $city = $('#city')
+        var $county = $('#county')
+        var json
+        $.getJSON('data/server2.json', function (data) {
+            $.each(data, function (index, obj) {
+                json = data
+                var provinceName = obj.province
+                $province.append(`<option value="${provinceName}">${provinceName}</option>`)
+            })
+            $province.bind('change', function () {
+                $city.empty()
+                $city.append(`<option value="">----</option>`)
+                var provinceElementName = $(this).children('option:selected').text()
+                $.each(json, function (index, obj) {
+                    var provinceName = obj.province
+                    if (provinceElementName === provinceName) {
+                        var cities = obj.cities
+                        $.each(cities, function (index, obj) {
+                            var cityName = obj.city;
+                            $city.append(`<option value="${cityName}">${cityName}</option>`)
+
+                        })
+                    }
+                })
+            })
+            $city.bind('change', function () {
+                $county.empty()
+                $county.append(`<option value="">----</option>`)
+                var provinceElementName = $('#province').children('option:selected').text()
+                var cityElementName = $(this).children('option:selected').text()
+                $.each(json, function (index, obj) {
+                    var provinceName = obj.province
+                    if (provinceElementName === provinceName) {
+                        var cities = obj.cities
+                        $.each(cities, function (index, obj) {
+                            var cityName = obj.city;
+                            if (cityName === cityElementName) {
+                                var county = obj.counties
+                                $.each(county, function (i, o) {
+                                    console.log(o);
+                                    $('#county').append(`<option value="${o}">${o}</option>`)
+                                })
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
