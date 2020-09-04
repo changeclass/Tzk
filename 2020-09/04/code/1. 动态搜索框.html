@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .container #search {
+            width: 300px;
+        }
+
+        .container .alert {
+            width: 300px;
+            border: 1px solid lightgray;
+            display: none;
+        }
+
+        .container .alert ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="search">
+        <div class="alert">
+            <ul class="tip">
+                <li>前端666</li>
+                <li>前端666</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $('#search').bind('input', function (e) {
+            var inputValue = $(this).val()
+            $.getJSON('data/server.json', function (data) {
+                $('.tip').empty()
+                $.each(data, function (index, obj) {
+                    console.log(index, obj);
+                    if (index === inputValue) {
+                        $('.alert').show()
+                        $.each(obj, function (i, o) {
+                            $('.tip').append(`<li>${o}</li>`)
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
