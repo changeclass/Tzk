@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<script>
+    let arr = [axios.get('https://v1.hitokoto.cn/'), axios.get('https://v1.hitokoto.cn/')]
+    axios.all(arr).then(result => {
+        // 返回结果为列表，其元素分别对应请求的结果
+        // console.log(result)
+    })
+
+    axios.all(arr).then(axios.spread((resA, resB) => {
+        // 传入参数分别对应请求的结果
+        console.log(resA);
+        console.log(resB);
+    }))
+</script>
+</body>
+</html>

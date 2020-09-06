@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script>
+    /*
+    * GET请求
+    */
+    axios.get('https://v1.hitokoto.cn/', {
+        // params为请求参数
+        params: {
+            c: "b"
+        }
+    }).then(function (res) {
+        console.log(res);
+    }).catch(function (err) {
+        console.log(err);
+    })
+</script>
+</body>
+</html>
