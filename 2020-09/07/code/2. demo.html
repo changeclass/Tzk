@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<p id="text"></p>
 <script>
     fetch('https://v1.hitokoto.cn?c=c', {
         // 请求方式
@@ -27,6 +28,7 @@
     }).then(result => {
         // 打印结果
         console.log(result)
+        document.querySelector('p').textContent = result.hitokoto
     })
 </script>
 </body>
