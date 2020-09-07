@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    fetch('https://v1.hitokoto.cn?c=c', {
+        // 请求方式
+        method: 'GET',
+        // 请求参数 , GET、HEAD请求不能包含body.
+        // 因此get请求设置参数只能通过对地址进行拼串
+        // body:'c=c',
+        // 请求头
+        headers: {
+            'Content-Type': 'x-www-form-urlencoded'
+        }
+    }).then(result => {
+        console.log(result);
+    })
+    */
+    fetch('https://v1.hitokoto.cn?c=c', {
+        // 请求方式
+        method: 'GET',
+        headers: {
+            'Content-Type': 'x-www-form-urlencoded'
+        }
+    }).then(result => {
+        let {status} = result
+        if (/^(4|5)\d{2}$/.test(status)) {
+            throw  new Error('query data is error')
+            return
+        }
+        return result.json();
+    }).then(result=>{
+        console.log(result)
+    }).catch()
+</script>
+</body>
+</html>
