@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 初始宽度300像素 高度150像素  -->
+    <canvas id="stockGraph" width="150" height="150">
+        <!-- 当浏览器兼容canvas时不显示里面的内容，不兼容时则显示其内容 -->
+        current stock price: $3.15 +0.15
+    </canvas>
+    <script>
+        var canvas = document.getElementById('stockGraph')
+        // 判断当前浏览器是否兼容canvas
+        if (canvas.getContext) {
+            // canvas被支持
+            var ctx = canvas.getContext('2d')
+        } else {
+            // canvas不被支持
+        }
+    </script>
+</body>
+
+</html>
