@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Speak | 小康博客</title>
+
+    <link rel="shortcut icon"
+          href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@da0eb59/butterfly/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@da0eb59/butterfly/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css">
+    <script>var _hmt = _hmt || [];
+    !function () {
+        var e = document.createElement("script");
+        e.src = "https://hm.baidu.com/hm.js?dd4bfe9d12f414317e04ab3463ea18d3";
+        var t = document.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(e, t)
+    }()</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=ca-pub-1197128104711052"></script>
+    <script>function gtag() {
+        dataLayer.push(arguments)
+    }
+
+    window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "ca-pub-1197128104711052")</script>
+    <link rel="stylesheet" href="https://fonts.dogedoge.com/css?family=Titillium+Web&amp;display=swap">
+
+    <noscript>
+        <style>
+            #nav {
+                opacity: 1
+            }
+
+            .justified-gallery img {
+                opacity: 1
+            }
+
+            #post-meta time,
+            #recent-posts time {
+                display: inline !important
+            }
+        </style>
+    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@da0eb59/butterfly/css/pool.css">
+    <style>
+        .app-refresh {
+            position: fixed;
+            top: -2.2rem;
+            left: 0;
+            right: 0;
+            z-index: 99999;
+            padding: 0 1rem;
+            font-size: 15px;
+            height: 2.2rem;
+            transition: all .3s ease
+        }
+
+        .app-refresh-wrap {
+            display: flex;
+            color: #fff;
+            height: 100%;
+            align-items: center;
+            justify-content: center
+        }
+
+        .app-refresh-wrap a {
+            color: #fff;
+            text-decoration: underline;
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+<div id="body-wrap">
+    <div id="web_bg" data-type="color"></div>
+    <main class="layout_page hide-aside" id="content-inner">
+        <div id="page">
+            <div id="article-container">
+                <center>
+                    <font size="4px">🍭 欢迎你的来访</font>
+                </center>
+                <center>
+                    <font size="4px">🍭 这里是小康的speak页面</font>
+                </center>
+                <div class="is-container"></div>
+                <script src="main.js"></script>
+                <script>
+                    new Speak(
+                        {
+                            // 昵称
+                            nickname: '🦄Dreamy.TZK',
+                            // 每页显示的条数
+                            per_page: 5,
+                            // 用户仓库ID
+                            owner: "antmoe",
+                            // 用户仓库名
+                            repo: "xiaokang.me",
+                            // 没有标签时显示的名称
+                            defaultLabelName: "Default",
+                            // 没有标签时的背景颜色
+                            defaultLabelColor: "#ffc107",
+                            // highlight样式（必须是连接）
+                            highlightcss:
+                                "https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/monokai-sublime.min.css",
+                            // 为不同标签名添加前缀修饰表情
+                            emojiLabel:
+                                {
+                                    Coder: "🎯",
+                                    日常: "💬",
+                                    Whoiam: '😶',
+                                    想法: "💫",
+                                    TODO: "🚧",
+                                    随便说说: "🎈",
+                                    测试: '👻',
+                                },
+                            // 上一页按钮的HTML，class名必须包含prev，否则无法绑定事件
+                            prevBtn:'<a class="btn-beautify button--animated left larger prev red" href="#" title="上一页" style="display:none;float:left" data-pjax-state=""><i class="far fa-hand-point-left fa-fw"></i> 上一页</a>',
+                            // 上一页按钮的HTML，class名必须包含next，否则无法绑定事件
+                            nextBtn:'<a class="btn-beautify button--animated larger next red" href="#" title="下一页" style="float: right; display: block;" data-pjax-state=""><i class="far fa-hand-point-right fa-fw"></i> 下一页</a>',
+                        });
+                </script>
+            </div>
+        </div>
+    </main>
+</div>
+<div>
+</div>
+</body>
+
+</html>
