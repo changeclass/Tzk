@@ -1,0 +1,31 @@
+html(lang='en')
+    head
+        mete(charset='UTF-8')
+        style.
+            .test {
+                color: red;
+                font-size: 24px;
+            }
+    body
+        h1(class='test') 你好
+        //- 添加类test
+        div.test
+            h1 div内的h1标签
+        mixin pet(name)
+            p 我的名字是#{name}
+        div#test
+            h1 div内的h1标签
+            +pet("小猫")
+            ul
+                each item,index in data
+                    li 我的名字是#{item.name},我喜欢#{item.hobby}
+        - let test =Math.floor( Math.random()*10)
+            case test
+                    when 3
+                        p p的值为#{test}
+                    when 4
+                        p p的值为#{test}
+                    when 5
+                        p p的值为#{test}
+                    default
+                        p p得值不是3 4 5
