@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- VUE的入口 -->
+    <!-- vue中的花括号内可填入的内容
+     * 表达式：可以通过运算（执行）得到结果（数据）的公式
+     *  - 变量
+     *  - 函数调用
+     *  - 数学运算
+     *
+     * 语句：if,else,while,for....
+     *
+     * 数据来源于组件内部，比如 data 中的数据
+     * 解析过程中，会自动绑定组件实例中的数据
+
+     -->
+    <div id="app">
+        <h1>xiaokang.me</h1>
+        <h2>name:{{name}}</h2>
+        <tab>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        // 定义一个可以复用的组件
+        Vue.component('tab', {
+            template: `<div>这是一个tab选项卡</div>`
+        })
+        // 创建一个根组件
+        let app = new Vue({
+            el: '#app',
+            // 用来挂载组件所需要渲染的数据
+            data: {
+                name: 'Xioakang',
+                age: 18
+            }
+        })
+
+    </script>
+</body>
+
+</html>

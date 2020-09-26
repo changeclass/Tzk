@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- VUE的入口 -->
+    <div id="app">
+        <h1>xiaokang.me</h1>
+        <tab>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        // 定义一个可以复用的组件
+        Vue.component('tab', {
+            template: `<div>这是一个tab选项卡</div>`
+        })
+        // 创建一个根组件
+        let app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

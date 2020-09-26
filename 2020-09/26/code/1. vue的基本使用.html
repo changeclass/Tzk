@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- VUE的入口 -->
+    <div id="app"></div>
+    <script>
+        // 创建一个根组件
+        let app = new Vue({
+            // 定义一个模板
+            template: '<div>xiaokang.me</div>'
+        })
+        // 将模板添加到#app这个元素中
+        app.$mount('#app')
+    </script>
+</body>
+
+</html>
