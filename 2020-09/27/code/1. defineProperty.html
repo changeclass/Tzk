@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let obj1 = {
+            x: 1,
+            y: 2
+        }
+        function render() {
+            console.log('渲染了！');
+        }
+        let obj2 = Object.assign({}, obj1)
+        // 当每次修改x属性时，调用render函数进行渲染。
+        Object.defineProperty(obj1, 'x', {
+            set(newVal) {
+                // 如果使用obj1会导致循环递归的问题，因此使用另一个变量
+                obj2.x = newVal
+                render()
+            },
+            get() {
+                return obj2.x
+            }
+        })
+        function set(key, value) {
+            Object.defineProperty(obj1, key, {
+                set(newVal) {
+                    value = newVal;
+                    render();
+                },
+                get() {
+                    return value;
+                }
+            })
+        }
+        // obj1.x = 2
+        // console.log(obj1.x);
+    </script>
+</body>
+
+</html>

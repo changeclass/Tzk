@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- v-text指令会将内部全部inner HTML替换 -->
+        <p v-text='title'>你好</p>
+
+        <!-- 会输出文本和变量的值 -->
+        <p v-cloak>你好，{{title}}</p>
+
+        <!-- 会将content变量作为html输出 -->
+        <p v-html='content'></p>
+
+        <!-- 忽略语法，直接输出{{title}} -->
+        <p v-pre>{{title}}</p>
+
+        <!-- v-show会根据逻辑表达式判断是否渲染 -->
+        <p v-show='isShow'>v-show指令</p>
+        <p v-if='isShow'>v-if指令</p>
+        <!-- 一定要与v-if相邻，中间不能添加其他元素 -->
+        <p v-else>isShow为false</p>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+
+        /**
+         * 指令
+         *  - 值是表达式模式
+         *  - 不支持 {{}} 语法
+         *
+         * v-if 与 v-show 的区别
+         *      v-if：值为true的时候渲染标签，false删除（不渲染）标签
+         *      v-show：渲染结构，但是根据值来隐藏和显示标签
+         * 使用v-if还是v-show：该结构是否经常变化
+         *
+         */
+        let app = new Vue({
+            el: '#app',
+            data: {
+                title: '小康',
+                isShow: false,
+                content: '<h1>小康</h1>'
+            }
+        });
+    </script>
+</body>
+
+</html>

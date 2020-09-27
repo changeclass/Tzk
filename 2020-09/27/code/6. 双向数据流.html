@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model='text'>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+
+        // 模板 => vdom => dom
+
+        let app = new Vue({
+            data: {
+                text: '文本'
+
+            }
+        });
+        app.$mount('#app');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test1 {
+            color: red;
+        }
+
+        .test2 {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <p v-bind:id='id'></p>
+        <p :id='id'></p>
+        <p v-bind:id='"id"'></p>
+
+        <div :style="[style1, style2]"></div>
+        <p :class="{'test1':flag}">xiaokang.me</p>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+
+        // 模板 => vdom => dom
+
+        let app = new Vue({
+            data: {
+                id: 'test',
+                flag: true,
+                style1: {
+                    width: '100px',
+                    height: '100px',
+                    background: 'green'
+                },
+                style2: {
+                    border: '1px solid black'
+                }
+            }
+        });
+        app.$mount('#app');
+
+    </script>
+</body>
+
+</html>
