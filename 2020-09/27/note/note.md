@@ -361,3 +361,34 @@ new Vue({
 
 ![0229caa6-1200-4bda-adcf-077d365295a8](https://files.alexhchu.com/2020/09/27/36cef1ec7d2c6.gif)
 
+- 对于`text`和`textarea`
+
+  双向数据绑定默认绑定的是value属性
+
+- `checkbox`和`box`
+
+  绑定的是checked属性
+
+- `select`
+
+  单选绑定到值，多选绑定到数组
+
+## 指令修饰符
+
+- `lazy`
+
+  取代input监听，`change`事件。
+
+  ```html
+  <input type="text" v-model.lazy='v1'>
+  ```
+
+  ![8ef5108c-402e-499e-baf4-7811499fa017](https://files.alexhchu.com/2020/09/28/7d603b60c9c4c.gif)
+
+- `number`
+
+  将输入的字符串转为有效数字
+
+- `trim`
+
+  输入首尾空格过滤
