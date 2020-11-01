@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='item in list'>{{item}}</li>
+        </ul>
+        <p>{{obj}}</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                list: ['apple', 'orange', 'banana'],
+                obj: {
+                    name: '哈哈',
+                    age: 12
+                }
+            },
+        })
+        // Vue.set(app.list, 2, 'lemon')
+        // 或者如下写法
+        // app.$set(app.list, 2, 'lemon')
+        app.$set(app.obj, 'age', 14)
+    </script>
+</body>
+
+</html>

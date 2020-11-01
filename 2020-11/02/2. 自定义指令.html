@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        Vue.directive('focus', {
+            inserted: function (el,) {
+                // el表示指令绑定的元素
+                el.focus()
+            }
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

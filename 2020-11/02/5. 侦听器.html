@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.lazy='msg'>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: ''
+            },
+            methods: {
+                getContent: function (val) {
+                    
+                    // 模拟异步
+                    setTimeout(() => {
+                        this.msg = '我被修改了哦！！'
+                    }, 2000)
+                }
+            },
+            watch: {
+                msg: function (val) {
+                    // 调用后台接口
+                    this.getContent(val)
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
