@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-color='msg' v-model='msg'>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        Vue.directive('color', {
+            bind: function (el, binding) {
+                // 根据指令的参数设置背景色
+                console.log(binding.value);
+                el.style.backgroundColor = binding.value
+
+            },
+            inserted: function (el, binding) {
+                // el表示指令绑定的元素
+                el.focus()
+            },
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'red'
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

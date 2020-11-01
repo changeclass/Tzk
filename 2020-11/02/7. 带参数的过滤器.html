@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 过滤器传递的参数通过第二个形参获取 -->
+        <p>{{date}}</p>
+        <p>{{date|format('yyy-MM-dd')}}</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        Vue.filter('format', function (val, arg) {
+            console.log(val.getMonth());
+            if (arg == 'yyy-MM-dd') {
+
+                var ret = ''
+                ret += val.getFullYear() + '-' + (val.getMonth() + 1) + '-' + val.getDate()
+                return ret
+            }
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+                date: new Date(),
+            },
+        })
+    </script>
+</body>
+
+</html>
