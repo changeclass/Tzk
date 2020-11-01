@@ -41,6 +41,8 @@ let app = new Vue({
         state: false,
         // 是否删除
         show: true,
+        // 编辑
+        edit: false,
       };
       this.todoItem.push(item);
       this.todoContent = "";
@@ -64,6 +66,14 @@ let app = new Vue({
     // 已完成的事件
     screen(flag) {
       this.state = flag;
+    },
+    // 编辑
+    edit(id) {
+      this.todoItem.forEach((element, index) => {
+        if (element.id == id) {
+          this.todoItem[id].edit = !this.todoItem[id].edit;
+        }
+      });
     },
   },
 });

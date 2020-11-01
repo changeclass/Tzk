@@ -28,13 +28,13 @@
         <div class="tasks">
             <span class="no-task-tip" v-if='showTodos.length==0'>还没有添加任何任务</span>
             <ul class="todo-list">
-                <li v-for='item of showTodos' class="todo">
+                <li v-for='item of showTodos' :class="{todo:1,completed:item.state,editing:item.edit}">
                     <div class="view">
-                        <input type="checkbox" class="toggle" checked>
-                        <label>{{item.content}}</label>
+                        <input type="checkbox" class="toggle" checked :value="item.state" v-model='item.state'>
+                        <label @dblclick="edit(item.id)">{{item.content}}</label>
                         <button class="destroy" @click='destroy(item.id)'></button>
                     </div>
-                    <input type="text" class="edit">
+                    <input type="text" class="edit" v-model='item.content' v-show='item.edit' @blur='edit(item.id)'>
                 </li>
             </ul>
         </div>
