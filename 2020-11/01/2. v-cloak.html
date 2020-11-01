@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 插值表达式 可以做简单的运算 -->
+        <h1 v-cloak>{{title}}</h1>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            // 模型数据
+            data: {
+                title: 'xiaokang'
+            }
+        })
+    </script>
+</body>
+
+</html>

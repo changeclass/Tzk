@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        数值A: <input type="text" v-model='a'><br>
+        数值B: <input type="text" v-model='b'><br>
+        <button @click='fn'>计算</button>
+        <p>计算结果：{{result}}</p>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            data: {
+                a: '',
+                b: '',
+                result: ''
+            },
+            // 定义方法，用于事件绑定
+            methods: {
+                fn() {
+                    this.result = parseInt(this.a) + parseInt(this.b)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

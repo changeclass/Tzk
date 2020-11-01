@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='(item,index) of fruits'>{{index}}---{{item}}</li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            data: {
+                fruits: ['apple', 'orange', 'banana']
+            },
+
+        })
+    </script>
+</body>
+
+</html>

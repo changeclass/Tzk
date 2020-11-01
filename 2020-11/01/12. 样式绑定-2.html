@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <div :style='{border:boderStyle,height:heightStyle,width:widthStyle}'></div>
+        <div :style='objStyle'></div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            data: {
+                boderStyle: '1px solid red',
+                heightStyle: '100px',
+                widthStyle: '100px',
+                objStyle: {
+                    border: '1px solid red',
+                    height: '100px',
+                    width: '100px',
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-if='flag' v-for='item of obj'>
+                {{item.id}}---{{item.name}}---{{item.age}}
+            </li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            data: {
+                obj: [
+                    {
+                        id: 1,
+                        name: 'a',
+                        age: 12
+                    },
+                    {
+                        id: 2,
+                        name: 'b',
+                        age: 13
+                    },
+                    {
+                        id: 3,
+                        name: 'c',
+                        age: 14
+                    },
+                ],
+                flag: false
+            },
+
+        })
+    </script>
+</body>
+
+</html>

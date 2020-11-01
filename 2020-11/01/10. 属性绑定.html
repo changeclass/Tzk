@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="href">{{href}}</a>
+        <a :href="href">{{href}}</a>
+        <button @click='fn'>切换</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            data: {
+                href: 'https://xiaokang.me'
+            },
+            // 定义方法，用于事件绑定
+            methods: {
+                fn() {
+                    this.href = 'https://www.antmoe.com'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

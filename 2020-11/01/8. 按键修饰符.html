@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='username' @keyup.delete='fn'>
+        <input type="text" v-model='password' @keyup.enter='fn2'>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            // 元素挂载的位置，可以是CSS选择器或者DOM元素
+            el: '#app',
+            data: {
+                username: '',
+                password: ''
+            },
+            // 定义方法，用于事件绑定
+            methods: {
+                fn() {
+                    console.log('按下了delete键');
+                    this.username = ''
+                },
+                fn2() {
+                    console.log('按下了回车键');
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

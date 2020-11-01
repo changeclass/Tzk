@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="01.css">
+</head>
+
+<body>
+    <div class="page-top">
+        <div class="page-content">
+            <h2>ToDoList</h2>
+        </div>
+    </div>
+    <div class="main">
+        <h3 class="big-title">AddTodos：</h3>
+        <input placeholder="填写你的任务" v-model='todoContent' type="text" class="task-input" @keyup.enter='add'>
+        <ul class="task-count">
+            <li>{{showTodos.length}}个任务未完成</li>
+            <li class="action">
+                <a @click='screen(0)' href="#" class="active">All</a>
+                <a @click='screen(1)' href="#">ToDo</a>
+                <a @click='screen(2)' href="#">Completed</a>
+            </li>
+        </ul>
+        <h3 class="big-title">ToDoList：</h3>
+        <div class="tasks">
+            <span class="no-task-tip" v-if='showTodos.length==0'>还没有添加任何任务</span>
+            <ul class="todo-list">
+                <li v-for='item of showTodos' class="todo">
+                    <div class="view">
+                        <input type="checkbox" class="toggle" checked>
+                        <label>{{item.content}}</label>
+                        <button class="destroy" @click='destroy(item.id)'></button>
+                    </div>
+                    <input type="text" class="edit">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
