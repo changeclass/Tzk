@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <component-a></component-a>
+        <component-b></component-b>
+        <component-c></component-c>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var ComponentA = {
+            data: function () {
+                return {
+                    msg: 'HelloWorld'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var ComponentB = {
+            data: function () {
+                return {
+                    msg: 'HelloTOM'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var ComponentC = {
+            data: function () {
+                return {
+                    msg: 'HelloVue'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                'component-a': ComponentA,
+                'component-b': ComponentB,
+                'component-c': ComponentC
+            }
+
+        });
+    </script>
+</body>
+
+</html>

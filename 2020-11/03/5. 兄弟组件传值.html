@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <test-tom></test-tom>
+        <test-jerry></test-jerry>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        // 提供事件中心
+        var hub = new Vue()
+        Vue.component('test-tom', {
+            data: function () {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+        <div>
+          <div>TOM:{{num}}</div>
+          <div><button @click='handle'>点击</button></div>
+        </div>
+      `,
+            methods: {
+                handle: function () {
+                    // 触发对方的事件
+                    hub.$emit('jerry-event', 1)
+                }
+            },
+            mounted: function () {
+                hub.$on('tom-event', (val) => {
+                    this.num += val
+                })
+            },
+        });
+        Vue.component('test-jerry', {
+            data: function () {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+        <div>
+          <div>jerry:{{num}}</div>
+          <div><button @click='handle'>点击</button></div>
+        </div>
+      `,
+            methods: {
+                handle: function () {
+                    hub.$emit('tom-event', 2)
+                }
+            },
+            mounted: function () {
+                hub.$on('jerry-event', (val) => {
+                    this.num += val
+                })
+            },
+        });
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件中内容',
+                parr: ['apple', 'orange', 'banana'],
+                fontSize: 10
+            },
+            methods: {
+                handle: function (val) {
+                    // 扩大字体大小
+                    this.fontSize += val;
+                },
+
+            }
+        });
+    </script>
+</body>
+
+</html>

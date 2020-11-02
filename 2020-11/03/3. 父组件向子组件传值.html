@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <menu-item title='来自父组件的值'></menu-item>
+        <menu-item :title='ptitle'></menu-item>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        Vue.component('menu-item', {
+            props: ['title'],
+            data: function () {
+                return {
+                    msg: '子组件'
+                }
+            },
+            template: '<div>{{msg}}---{{title}}</div>'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: "父组件",
+                ptitle: '来自父组件的值'
+            }
+        });
+    </script>
+</body>
+
+</html>
