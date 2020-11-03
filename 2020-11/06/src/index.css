@@ -1,0 +1,10 @@
+li {
+  list-style: none;
+}
+
+#box {
+  width: 580px;
+  height: 340px;
+  background-color: pink;
+  background-image: url("./20200815214126.jpg");
+}
