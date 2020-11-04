@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <sona></sona>
+        <sonb></sonb>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        var hub = new Vue()
+        var sona = {
+            template: `<div>
+            <p>组件A --- {{ msg }}</p>
+            <button @click='change'>按钮</button></div > `,
+            data: function () {
+                return {
+                    msg: '这是组件A的消息',
+                }
+            },
+            methods: {
+                change: function () {
+                    hub.$emit('aevent', '来自A修改的消息')
+                }
+            },
+        }
+        var sonb = {
+            template: `<div>组件B---{{msg}}</div>`,
+            data: function () {
+                return {
+                    msg: '这是组件B的消息',
+                }
+            },
+            mounted: function () {
+                hub.$on('aevent', (val) => {
+                    this.msg = val
+                })
+            },
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                sona,
+                sonb
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

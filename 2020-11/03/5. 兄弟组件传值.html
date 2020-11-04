@@ -37,6 +37,11 @@
                 hub.$on('tom-event', (val) => {
                     this.num += val
                 })
+            },},
+            mounted: function () {
+                hub.$on('tom-event', (val) => {
+                    this.num += val
+                })
             },
         });
         Vue.component('test-jerry', {

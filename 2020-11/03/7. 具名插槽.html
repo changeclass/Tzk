@@ -14,14 +14,17 @@
             <p slot="footer">尾部</p>
         </base-layout> -->
         <base-layout>
-            <template slot="header">
-                <p slot="header">标题</p>
+            <template>
+                <p slot="header">标题</p> <!-- 只有这个标签会填充到名称为header插槽内-->
+                <p>哈哈哈</p> <!-- 会填充到默认插槽内-->
             </template>
             <template>
                 <p>主要内容</p>
             </template>
             <template slot="footer">
-                <p slot="footer">尾部</p>
+                <!-- 此标签下的内容会全部填充到名称为footer插槽内-->
+                <p>尾部</p>
+                <p>尾部哈哈哈哈哈</p> <!-- 会填充到默认插槽内-->
             </template>
         </base-layout>
     </div>
