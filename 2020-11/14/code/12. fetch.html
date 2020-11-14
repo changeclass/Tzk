@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/prop-types.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+    <script src=" ../../js/babel.min.js"></script>
+    <script type='text/babel'>
+        class MostStart extends React.Component {
+            state = {
+                repoName: '',
+                repoUrl: ''
+            }
+            componentDidMount() {
+                // 发送Ajax请求
+                const url = `https://api.github.com/search/repositories?q=r&sort=stars`
+                fetch(url)
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(data => {
+                        const { html_url, name } = data.items[0]
+                        this.state.repoUrl = html_url
+                        this.state.repoName = name
+                        this.setState({ html_url, name })
+                    })
+
+            }
+            render() {
+                const { repoName, repoUrl } = this.state
+
+                if (!repoName) { return <h2>LOADING....</h2> } else {
+                    return <h2>Most star repo is <a href={repoUrl} target="_blank" rel="noopener noreferrer">{repoName}</a></h2>
+                }
+
+            }
+        }
+        ReactDOM.render(<MostStart />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>
