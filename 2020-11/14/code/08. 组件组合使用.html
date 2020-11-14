@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<div id="test"></div>
+<script src="../../js/react.development.js"></script>
+<script src="../../js/react-dom.development.js"></script>
+<script src="../../js/prop-types.js"></script>
+<script src=" ../../js/babel.min.js"></script>
+<script type='text/babel'>
+    class App extends React.Component {
+        constructor(props) {
+            super(props)
+            this.state = {
+                todos: ['吃饭', '睡觉', '打代码']
+            }
+            // 绑定this
+            this.addItem = this.addItem.bind(this)
+        }
+
+        // 添加值的具体方法
+        addItem(val) {
+            // 将值放到数组最前方
+            this.state.todos.unshift(val)
+            // 设置状态
+            this.setState(this.state)
+        }
+
+        render() {
+            const {todos} = this.state
+            // 将addItem方法作为属性传入到子组件
+            return (
+                <div>
+                    <h1>Simple TODO List</h1>
+                    <Add count={todos.length} addItem={this.addItem}/>
+                    <List todos={todos}/>
+                </div>
+            )
+
+        }
+    }
+
+    class Add extends React.Component {
+        constructor(props) {
+            super(props);
+            this.addItem = this.addItem.bind(this)
+        }
+
+        addItem() {
+            // 获取input的值
+            const todo = this.todoInput.value.trim()
+            if (!todo) return
+            // 调用父组件传来的方法
+            this.props.addItem(todo)
+            this.todoInput.value = ''
+        }
+
+        render() {
+            // 为input标签挂载到当前对象的属性
+            return (
+                <div>
+                    <input type="text" ref={input => this.todoInput = input}/>
+                    <button onClick={this.addItem}>add #{this.props.count + 1}</button>
+                </div>
+            )
+
+        }
+    }
+
+    Add.propsTypes = {
+        count: PropTypes.number.isRequired,
+        addItem: PropTypes.func
+    }
+
+    class List extends React.Component {
+        render() {
+            return (
+                <ul>
+                    {
+                        this.props.todos.map((todo, index) => <li key={index}>{todo}</li>)
+                    }
+                </ul>
+            )
+
+        }
+    }
+
+    List.propsTypes = {
+        todos: PropTypes.array.isRequired
+    }
+    ReactDOM.render(<App/>, document.getElementById('test'))
+</script>
+</body>
+
+</html>

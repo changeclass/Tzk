@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/prop-types.js"></script>
+    <script src=" ../../js/babel.min.js"></script>
+    <script type='text/babel'>
+        class Life extends React.Component {
+            constructor(props) {
+                super(props)
+                // 初始化状态
+                this.state = {
+                    opactity: 1
+                }
+                this.distroy = this.distroy.bind(this)
+            }
+            // 挂载后的生命周期
+            componentDidMount() {
+                // 启动循环定时器
+                this.intervalId = setInterval(() => {
+                    let { opactity } = this.state
+                    opactity -= 0.1
+                    if (opactity <= 0) {
+                        opactity = 1
+                    }
+                    this.setState({ opactity })
+                }, 100)
+            }
+
+            distroy() {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+            // 销毁时的生命周期
+            componentWillUnmount() {
+                clearInterval(this.intervalId)
+            }
+            render() {
+                const { opactity } = this.state
+                return (
+                    <div>
+                        <h2 style={{ opacity: opactity }}>{this.props.msg}</h2>
+                        <button onClick={this.distroy}>不活了</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Life msg='react太难了' />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

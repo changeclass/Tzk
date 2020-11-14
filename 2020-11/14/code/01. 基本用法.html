@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <!-- 核心库 -->
+  <script src="../../js/react.development.js"></script>
+  <!-- 提供DOM操作的扩展库 -->
+  <script src="../../js/react-dom.development.js"></script>
+  <!-- 解析JSX语法代码转为纯JS -->
+  <script src="../../js/babel.min.js"></script>
+  <script type='text/babel'> // 告诉babel.js解析里面的jsx代码
+    // 1. 创建虚拟DOM元素对象
+    var vDom = <h1>Hello React!</h1>
+    // 2. 将虚拟DOM渲染到真实的DOM容器中
+    ReactDOM.render(vDom, document.getElementById('test'))
+  </script>
+</body>
+
+</html>
