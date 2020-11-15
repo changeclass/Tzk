@@ -31,7 +31,6 @@
             }
             render() {
                 const { repoName, repoUrl } = this.state
-
                 if (!repoName) { return <h2>LOADING....</h2> } else {
                     return <h2>Most star repo is <a href={repoUrl} target="_blank" rel="noopener noreferrer">{repoName}</a></h2>
                 }
