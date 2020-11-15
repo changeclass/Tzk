@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import propTypes from 'prop-types'
 import axios from 'axios'
+import PubSub from 'pubsub-js'
 export default class Main extends Component {
   state = {
     initView: true,
@@ -8,18 +8,14 @@ export default class Main extends Component {
     users: null,
     errorMsg: null
   }
-  static propTypes = {
-    searchName: propTypes.string.isRequired
-  }
-  // 组件接收到新的属性时调用
-  async componentWillReceiveProps(newProps) {
-    const { searchName } = newProps
-    this.setState({
-      initView: false,
-      loading: true
-    })
-    const url = `https://api.github.com/search/users?q=${searchName}`
-    try {
+  componentDidMount() {
+    // 订阅消息
+    PubSub.subscribe('search', async (msg, searchName) => {
+      this.setState({
+        initView: false,
+        loading: true
+      })
+      const url = `https://api.github.com/search/users?q=${searchName}`
       const { data: res } = await axios.get(url)
       // 得到相应数据更新状态
       const users = res.items.map((item) => {
@@ -33,13 +29,9 @@ export default class Main extends Component {
         loading: false,
         users
       })
-    } catch {
-      this.setState({
-        loading: false,
-        errorMsg: 'Error'
-      })
-    }
+    })
   }
+
   render() {
     console.log(this.props.searchName)
     const { initView, loading, users, errorMsg } = this.state
