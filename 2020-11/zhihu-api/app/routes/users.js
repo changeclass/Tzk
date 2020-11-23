@@ -2,7 +2,7 @@ const Router = require('koa-router')
 const jsonwebtoken = require('jsonwebtoken')
 
 const router = new Router({ prefix: '/users' })
-const { find, findById, delete: del, update, create, login } = require('../controllers/user')
+const { find, findById, delete: del, update, create, login, checkOwner } = require('../controllers/user')
 const { secret } = require('../config')
 
 const auth = async (ctx, next) => {
@@ -20,8 +20,8 @@ const auth = async (ctx, next) => {
 router.get('/', find)
 router.post('/', create)
 router.get('/:id', findById)
-router.patch('/:id', auth, update)
-router.delete('/:id', auth, del)
+router.patch('/:id', auth, checkOwner, update)
+router.delete('/:id', auth, checkOwner, del)
 // 用户登录
 router.post('/login', login)
 
