@@ -1,39 +1,44 @@
 const Koa = require('koa')
 const koaBody = require('koa-body')
+const koaStatic = require('koa-static')
 const error = require('koa-json-error')
 const parameter = require('koa-parameter')
-const mongoose = require('mongoose')
 const path = require('path')
-const koaStatic = require('koa-static')
-const app = new Koa()
-const routing = require('./routes/index')
-// 通过配置文件导入链接字符串
-const { connectionStr } = require('./config')
-mongoose.connect(connectionStr, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
-  console.log('链接成功了');
-})
-// 静态文件
-app.use(koaStatic(path.join(__dirname, 'public')))
+const mongoose =require('mongoose')
+const {connectionStr} =require('./config')
 
-// 默认配置
-app.use(error({
-  postFormat: (e, { staack, ...rest }) => process.env.NODE_ENV === 'production' ? rest : { staack, ...rest }
-}))
+const app = new Koa() //instance
+const routing = require("./router")
+
+//connect mongoDB
+mongoose.connect(connectionStr, { useNewUrlParser: true } ,()=>{console.log("MongoDB connection successful")})
+mongoose.connection.on('error',()=>{console.error("error occured")})
 
 
+//static-server
+//can access /public file via http request
+app.use(koaStatic(path.join(__dirname,'public')))
+
+
+
+//ctx.request.body
 app.use(koaBody({
-  // 启用文件传输
-  multipart: true,
-  formidable: {
-    // 上传目录
-    uploadDir: path.join(__dirname, '/public/uploads'),
-    // 保留扩展名
-    keepExtensions: true
-  }
+    multipart:true,// support file
+    formidable:{
+        uploadDir:path.join(__dirname,'/public/uploads'),//上传文件保存路径
+        keepExtensions:true //保留文件扩展名
+    }    
 }))
 
+//error handler
+app.use(error({
+    postFormat:((e,{stack,...rest})=>{
+        return process.env.NODE_ENV === 'production'?rest:{stack,...rest}
+    })
+}))
+/// check parameter
 app.use(parameter(app))
 routing(app)
-app.listen(3000, () => {
-  console.log("程序启动了!");
+app.listen(3000,()=>{
+    console.log("starting")
 })
