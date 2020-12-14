@@ -1,0 +1,8 @@
+// 枚举类型一旦定义无法在被赋值
+var HTTP_CODE;
+(function (HTTP_CODE) {
+    HTTP_CODE[HTTP_CODE["OK"] = 200] = "OK";
+    HTTP_CODE[HTTP_CODE["NOT_FOUNT"] = 404] = "NOT_FOUNT";
+    HTTP_CODE[HTTP_CODE["METHOD_NOT_ALLOWED"] = 405] = "METHOD_NOT_ALLOWED";
+})(HTTP_CODE || (HTTP_CODE = {}));
+HTTP_CODE.OK;
