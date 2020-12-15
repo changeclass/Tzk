@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es5",
+    "watch": true,
+    // 严格空检查
+    "strictNullChecks": true,
+    // 指定生成哪个模块系统的代码
+    "module": "CommonJS",
+    // 处理js文件
+    "allowJs": true,
+    // 允许从没有设置默认导出的模块中默认导入
+    "allowSyntheticDefaultImports": true,
+    // 则在编译的同时生成一个 `__importDefault` 函数，用来处理具体的 `default` 默认导出
+    "esModuleInterop": true,
+    // 加载JSON文件
+    "resolveJsonModule": true,
+    // 启用装饰器
+    "experimentalDecorators": true
+  },
+  "include": ["./src/**/*"]
+}
