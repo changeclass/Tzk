@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#swiper-container {
+  width: 100%;
+  height: 176px; /* no */
+  position: relative;
+
+  .swiper-wrapper {
+    width: 500%;
+    overflow: hidden;
+
+    .swiper-slide {
+      width: 20%;
+      float: left;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  //  导航点
+  .swiper-pagination {
+    position: absolute;
+    width: 100%;
+    height: 10px; /* no */
+    left: 0;
+    bottom: 10px; /* no */
+    line-height: 10px;
+    text-align: center;
+
+    span {
+      display: inline-block;
+      width: 10px; /* no */
+      height: 10px; /* no */
+      background: #fff;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    .active {
+      background: darkorange;
+    }
+  }
+}
+
+
