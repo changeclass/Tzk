@@ -4,12 +4,14 @@ const app = document.querySelector('#app')
 
 const container = document.querySelector('#swiper-container')
 const wrapper = container.querySelector('.swiper-wrapper')
-// 获取图片的数量
-const len = container.querySelectorAll('.swiper-slide')
+// 获取所有图片
+const slides = container.querySelectorAll('.swiper-slide')
 // 当前显示的图片的下标
 let index = 0
 // 获取所有小圆点
-const dots = container.querySelectorAll('.swiper-pagination span')
+let dots = null
+// 获取小圆点的容器
+const pagination = container.querySelector('.swiper-pagination')
 app.addEventListener('touchstart', function (e) {
   e.preventDefault()
 })
@@ -66,8 +68,8 @@ container.addEventListener('touchend', function (e) {
   if (index < 0) {
     index = 0
   }
-  if (index > len.length - 1) {
-    index = len.length - 1
+  if (index > slides.length - 1) {
+    index = slides.length - 1
   }
 
   /**
@@ -88,3 +90,29 @@ container.addEventListener('touchend', function (e) {
   // 当前索引的导航点 增加 active 类
   dots[index].classList.add('active')
 })
+
+// 初始化函数
+function init() {
+  // 容器设置 高度
+  window.onload = function () {
+    // 获取第一个图片的高度
+    const h = slides[0].offsetHeight
+    container.style.height = h + 'px'
+  }
+  // 包裹元素的宽度
+  wrapper.style.width = slides.length * 100 + '%'
+  // 设置子元素的宽度
+  slides.forEach((item) => {
+    item.style.width = 100 / slides.length + '%'
+  })
+  // 根据图片数量动态创建导航点的个数
+  for (var i = 0; i < slides.length; i++) {
+    const span = document.createElement('span')
+    if (i == 0) {
+      span.className = 'active'
+    }
+    pagination.appendChild(span)
+  }
+  dots = container.querySelectorAll('.swiper-pagination span')
+}
+init()
