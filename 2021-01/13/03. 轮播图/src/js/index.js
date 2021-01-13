@@ -21,6 +21,9 @@ container.addEventListener('touchstart', function (e) {
 
   // 获取包裹元素的水平偏移量
   this.left = wrapper.offsetLeft
+
+  // 移除过度效果
+  wrapper.style.transition = 'none'
 })
 
 // 触摸滑动时事件
@@ -34,6 +37,8 @@ container.addEventListener('touchmove', function (e) {
 
 // 触摸结束事件
 container.addEventListener('touchend', function (e) {
+  // 增加过度
+  wrapper.style.transition = 'all .5s'
   // 获取触点结束时触点位置
   this._x = e.changedTouches[0].clientX
   // 向左滑动
