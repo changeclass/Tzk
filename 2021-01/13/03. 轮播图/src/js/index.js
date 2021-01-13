@@ -12,7 +12,8 @@ var index = 0
 let dots = null
 // 获取小圆点的容器
 const pagination = container.querySelector('.swiper-pagination')
-
+// 定时器
+let timer = null
 // 无缝滚动
 wrapper.innerHTML += wrapper.innerHTML
 const slidesNew = container.querySelectorAll('.swiper-slide')
@@ -45,6 +46,8 @@ container.addEventListener('touchstart', function (e) {
 
   // 获取包裹元素的水平偏移量
   this.left = wrapper.offsetLeft
+  // 停止定时器
+  clearInterval(timer)
 })
 
 // 触摸滑动时事件
@@ -106,6 +109,8 @@ container.addEventListener('touchend', function (e) {
   })
   // 当前索引的导航点 增加 active 类
   dots[index % slides.length].classList.add('active')
+  // 启动定时器
+  autoRun()
 })
 
 // 初始化函数
@@ -133,3 +138,41 @@ function init() {
   dots = container.querySelectorAll('.swiper-pagination span')
 }
 init()
+
+// 自动播放
+function autoRun() {
+  // 防止定时器重复
+  clearInterval(timer)
+  // 启动定时器
+  timer = setInterval(function () {
+    // 索引自增 切换幻灯片
+    index++
+    // 增加过度
+    wrapper.style.transition = 'all .5s'
+    const newLeft = -index * container.offsetWidth
+    // 设置left的样式
+    wrapper.style.left = newLeft + 'px'
+
+    // 点的切换
+    // 移除所有导航点的active类
+    dots.forEach(function (dot) {
+      dot.classList.remove('active')
+    })
+    // 当前索引的导航点 增加 active 类
+    dots[index % slides.length].classList.add('active')
+  }, 1000)
+}
+autoRun()
+
+// 动画过渡完毕时间
+wrapper.addEventListener('transitionend', (e) => {
+  // 是不是最后一张
+  if (index === slidesNew.length - 1) {
+    // 移除过渡
+    wrapper.style.transition = 'none'
+    index = slides.length - 1
+    const newLeft = -index * container.offsetWidth
+    // 设置left的样式
+    wrapper.style.left = newLeft + 'px'
+  }
+})
