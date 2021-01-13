@@ -24,6 +24,8 @@ container.addEventListener('touchstart', function (e) {
 
   // 移除过度效果
   wrapper.style.transition = 'none'
+  // 获取按下时的时间点
+  this.touchStartTime = Date.now()
 })
 
 // 触摸滑动时事件
@@ -41,14 +43,25 @@ container.addEventListener('touchend', function (e) {
   wrapper.style.transition = 'all .5s'
   // 获取触点结束时触点位置
   this._x = e.changedTouches[0].clientX
-  // 向左滑动
-  if (this._x < this.x) {
-    index++
+  // 判断距离
+  const disX = Math.abs(this._x - this.x)
+  // 判断时间
+  this.touchEndTime = Date.now()
+
+  if (
+    disX > container.offsetWidth / 2 ||
+    this.touchEndTime - this.touchStartTime <= 300
+  ) {
+    // 向左滑动
+    if (this._x < this.x) {
+      index++
+    }
+    // 向右滑动
+    if (this._x > this.x) {
+      index--
+    }
   }
-  // 向右滑动
-  if (this._x > this.x) {
-    index--
-  }
+
   // 检测是否越界
   if (index < 0) {
     index = 0
