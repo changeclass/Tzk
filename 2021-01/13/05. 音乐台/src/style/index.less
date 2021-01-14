@@ -16,7 +16,9 @@ body,
 // 头部
 #header {
   background-color: #232323;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   .up {
     height: 135px;
     .logo {
@@ -79,6 +81,10 @@ body,
       font-size: 41px;
       color: #333;
       border-radius: 15px 0 0 15px;
+      outline: none;
+      &:focus {
+        background-color: #fff;
+      }
     }
     button {
       width: 203px;
@@ -115,3 +121,36 @@ body,
   }
 }
 // 头部 end
+
+// 内容区
+#main {
+  padding-top: 270px;
+  #nav {
+    box-sizing: border-box;
+    height: 177px;
+    padding-top: 31px;
+    padding-bottom: 14px;
+    .wrap {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 0;
+      li {
+        display: inline-block;
+        height: 129px;
+        line-height: 129px;
+        font-size: 67.5px;
+        padding: 0 38px;
+        a {
+          color: #020202;
+        }
+        &.active {
+          background: #690;
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+// 内容区 end
