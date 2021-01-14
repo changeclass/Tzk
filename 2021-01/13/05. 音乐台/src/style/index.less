@@ -11,4 +11,84 @@ body,
   overflow: hidden;
 }
 
-// 适配代码
+// 适配代码 -> 由于插件会自动转换尺寸，因此无需手动设置
+
+// 头部
+#header {
+  background-color: #232323;
+  .up {
+    height: 135px;
+    .logo {
+      width: 240px;
+      height: 88px;
+      padding: 26px 17px 21px;
+      float: left;
+    }
+    .menu {
+      float: left;
+      width: 129px;
+      height: 135px;
+      background-image: url('../img/menuBtn.png');
+      background-repeat: no-repeat;
+      background-size: 82px 233px;
+      background-position: center 16px;
+      &.open {
+        background-position: center -120px;
+      }
+    }
+    .btn-group {
+      padding-top: 21px;
+      float: right;
+      .btn {
+        width: 111px;
+        height: 78px;
+        line-height: 78px;
+        background: #690;
+        color: #ccc;
+        margin-right: 15px;
+        font-size: 42px;
+        text-align: center;
+        border-radius: 8px;
+        float: left;
+      }
+      .search-btn {
+        width: 130px;
+        height: 88px;
+        color: #fff;
+        margin-right: 30px;
+        margin-top: 3px;
+        font-weight: bold;
+        border-radius: 10px;
+      }
+    }
+  }
+  .down {
+    height: 103px;
+    padding: 16px;
+    ::-webkit-input-placeholder {
+      color: 333;
+    }
+    input {
+      box-sizing: border-box;
+      width: 829px;
+      height: 103px;
+      background-color: #999;
+      padding: 5px 10px;
+      border: 1px solid #5a5a5a;
+      font-size: 41px;
+      color: #333;
+      border-radius: 15px 0 0 15px;
+    }
+    button {
+      width: 203px;
+      height: 103px;
+      outline: none;
+      background: #414040;
+      color: #fff;
+      font-size: 41px;
+      border-radius: 0 15px 15px 0;
+      border: none;
+    }
+  }
+}
+// 头部 end

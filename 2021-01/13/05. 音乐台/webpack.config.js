@@ -8,6 +8,7 @@ module.exports = {
   output: {
     filename: 'js/[chunkhash:8].js',
     path: resolve(__dirname, 'dist')
+    // publicPath: '../'
   },
   module: {
     rules: [
@@ -15,14 +16,19 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
           'css-loader',
           {
             loader: 'px2rem-loader',
             // options here
             options: {
               // 1rem=100px
-              remUni: 108, //设计图的宽度/10 比如你的设计图是1920的宽度 这里你就1920/10=192
+              remUnit: 108, //设计图的宽度/10 比如你的设计图是1920的宽度 这里你就1920/10=192
               remPrecision: 8
             }
           },
