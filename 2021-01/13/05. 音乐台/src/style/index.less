@@ -16,6 +16,7 @@ body,
 // 头部
 #header {
   background-color: #232323;
+  position: relative;
   .up {
     height: 135px;
     .logo {
@@ -88,6 +89,28 @@ body,
       font-size: 41px;
       border-radius: 0 15px 15px 0;
       border: none;
+    }
+  }
+  .zhezhao {
+    width: 100%;
+    position: absolute;
+    top: 135px;
+    border-top: 1px solid #6a6a6a;
+    background: rgba(0, 0, 0, 0.8);
+    li {
+      width: 22.5%;
+      height: 135px;
+      line-height: 135px;
+      font-size: 54px;
+      text-align: center;
+      font-weight: bold;
+      float: left;
+      a {
+        color: white;
+      }
+    }
+    &.close {
+      display: none;
     }
   }
 }
