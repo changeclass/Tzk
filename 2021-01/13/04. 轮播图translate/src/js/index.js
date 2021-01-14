@@ -1,5 +1,5 @@
 import '../style/index.less'
-
+import './transformCSS'
 const app = document.querySelector('#app')
 
 const container = document.querySelector('#swiper-container')
@@ -43,7 +43,7 @@ container.addEventListener('touchstart', function (e) {
   // 获取包裹元素的水平偏移量
   // this.left = wrapper.offsetLeft
   // 获取元素的transform样式值
-  let res = getComputedStyle(wrapper)
+  this.left = transformCSS(wrapper, 'translateX')
   // 停止定时器
   clearInterval(timer)
 })
@@ -77,7 +77,8 @@ container.addEventListener('touchmove', function (e) {
   // 设置left的值
   // wrapper.style.left = newLeft + 'px'
   // 设置元素的translateX
-  wrapper.style.transform = `translateX(${newLeft}px)`
+  // wrapper.style.transform = `translateX(${newLeft}px)`
+  transformCSS(wrapper, 'translateX', newLeft)
 })
 
 // 触摸结束事件
@@ -185,7 +186,8 @@ container.switchSlide = function (i, isTransition) {
   const newLeft = -i * container.offsetWidth
   // 设置left的样式
   // wrapper.style.left = newLeft + 'px'
-  wrapper.style.transform = `translateX(${newLeft}px)`
+  // wrapper.style.transform = `translateX(${newLeft}px)`
+  transformCSS(wrapper, 'translateX', newLeft)
 
   // 点的切换
   // 移除所有导航点的active类
