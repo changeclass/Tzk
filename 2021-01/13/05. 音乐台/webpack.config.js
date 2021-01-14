@@ -22,7 +22,7 @@ module.exports = {
             // options here
             options: {
               // 1rem=100px
-              remUni: 100, //设计图的宽度/10 比如你的设计图是1920的宽度 这里你就1920/10=192
+              remUni: 108, //设计图的宽度/10 比如你的设计图是1920的宽度 这里你就1920/10=192
               remPrecision: 8
             }
           },
