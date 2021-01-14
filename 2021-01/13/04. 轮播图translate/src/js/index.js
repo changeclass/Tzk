@@ -41,7 +41,9 @@ container.addEventListener('touchstart', function (e) {
   this.y = e.touches[0].clientY
 
   // 获取包裹元素的水平偏移量
-  this.left = wrapper.offsetLeft
+  // this.left = wrapper.offsetLeft
+  // 获取元素的transform样式值
+  let res = getComputedStyle(wrapper)
   // 停止定时器
   clearInterval(timer)
 })
@@ -73,7 +75,9 @@ container.addEventListener('touchmove', function (e) {
   // 计算新的left值
   const newLeft = this._x - this.x + this.left
   // 设置left的值
-  wrapper.style.left = newLeft + 'px'
+  // wrapper.style.left = newLeft + 'px'
+  // 设置元素的translateX
+  wrapper.style.transform = `translateX(${newLeft}px)`
 })
 
 // 触摸结束事件
@@ -180,7 +184,8 @@ container.switchSlide = function (i, isTransition) {
   // 计算新的left的值
   const newLeft = -i * container.offsetWidth
   // 设置left的样式
-  wrapper.style.left = newLeft + 'px'
+  // wrapper.style.left = newLeft + 'px'
+  wrapper.style.transform = `translateX(${newLeft}px)`
 
   // 点的切换
   // 移除所有导航点的active类
