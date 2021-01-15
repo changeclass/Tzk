@@ -130,6 +130,7 @@ import './swiper'
   // 获取导航元素
   const navItems = floor.querySelectorAll('.nav-item')
   // 绑定事件
+  const swiper = new Swiper('.container')
   navItems.forEach((item, key) => {
     item.key = key
     item.addEventListener('touchstart', function () {
@@ -137,9 +138,8 @@ import './swiper'
 
       const translateX = this.key * movedBorder.offsetWidth
       transformCSS(movedBorder, 'translateX', translateX)
-
+      swiper.node.switchSlide(this.key)
       // console.log(translateX)
     })
   })
-  new Swiper('.container')
 })()
