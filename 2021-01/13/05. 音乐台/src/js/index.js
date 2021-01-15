@@ -129,8 +129,9 @@ import './swiper'
   const movedBorder = floor.querySelector('.moved-border')
   // 获取导航元素
   const navItems = floor.querySelectorAll('.nav-item')
+  const wrapper = floor.querySelector('.swiper-wrapper')
+  const container = floor.querySelector('.container')
   // 绑定事件
-  const swiper = new Swiper('.container')
   navItems.forEach((item, key) => {
     item.key = key
     item.addEventListener('touchstart', function () {
@@ -141,5 +142,13 @@ import './swiper'
       swiper.node.switchSlide(this.key)
       // console.log(translateX)
     })
+  })
+  const swiper = new Swiper('.container', {
+    callback: {
+      end: function () {
+        const index = swiper.getIndex()
+        transformCSS(movedBorder, 'translateX', index * movedBorder.offsetWidth)
+      }
+    }
   })
 })()
