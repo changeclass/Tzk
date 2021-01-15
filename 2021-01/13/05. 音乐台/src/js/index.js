@@ -52,7 +52,15 @@ import './swiper'
   })
   nav.addEventListener('touchmove', function (e) {
     this._x = e.touches[0].clientX
-    const newLeft = this._x - this.x + this.left
+    let newLeft = this._x - this.x + this.left
+    if (newLeft > 0) {
+      newLeft = (this._x - this.x) / 2
+    }
+    const minTranslateX = nav.offsetWidth - wrap.offsetWidth
+    if (newLeft < minTranslateX) {
+      newLeft = minTranslateX + (this._x - this.x) / 2
+    }
+
     transformCSS(wrap, 'translateX', newLeft)
   })
   // 绑定触摸结束事件
