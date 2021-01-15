@@ -114,3 +114,10 @@ import './swiper'
     })
   })
 })()
+// 轮播图
+;(function () {
+  new Swiper('#swiper', {
+    pagination: true,
+    loop: true
+  })
+})()
