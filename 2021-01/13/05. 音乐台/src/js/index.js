@@ -121,3 +121,7 @@ import './swiper'
     loop: true
   })
 })()
+// 导航区
+;(function () {
+  new Swiper('.container')
+})()
