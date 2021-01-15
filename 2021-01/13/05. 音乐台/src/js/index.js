@@ -28,7 +28,7 @@ import './swiper'
     // 使按钮的状态改变
     this.classList.toggle('open')
     // 使菜单的显示状态改变
-    zhezhao.classList.toggle('open')
+    zhezhao.classList.toggle('close')
   })
   const input = document.querySelector('#search')
   input.addEventListener('touchstart', function (e) {
@@ -38,9 +38,12 @@ import './swiper'
     input.blur()
   })
 })()
+// 导航区
 ;(function () {
   var nav = document.querySelector('#nav')
   var wrap = nav.querySelector('.wrap')
+  const navItem = nav.querySelectorAll('li')
+  var isMoving = false
   nav.addEventListener('touchstart', function (e) {
     // 获取起始点触点位置
     this.x = e.touches[0].clientX
@@ -62,6 +65,9 @@ import './swiper'
     }
 
     transformCSS(wrap, 'translateX', newLeft)
+
+    // 修改状态变量的值
+    isMoving = true
   })
   // 绑定触摸结束事件
   nav.addEventListener('touchend', function (e) {
@@ -82,7 +88,6 @@ import './swiper'
     // 过渡切换
     wrap.style.transition = '.5s ease-out'
     transformCSS(wrap, 'translateX', translateX)
-    console.log(disX, disTime)
     // 判断是否越界
     if (translateX > 0) {
       // 增加过渡
@@ -95,5 +100,17 @@ import './swiper'
       wrap.style.transition = '.5s cubic-bezier(.21,.68,.42,1.77)'
       transformCSS(wrap, 'translateX', minTranslateX)
     }
+    isMoving = false
+  })
+
+  navItem.forEach(function (i) {
+    i.addEventListener('touchend', function () {
+      if (isMoving) return
+      navItem.forEach(function (v) {
+        // 移除每一个导航元素的active class
+        v.classList.remove('active')
+      })
+      this.classList.add('active')
+    })
   })
 })()
