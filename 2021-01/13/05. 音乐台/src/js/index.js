@@ -123,5 +123,23 @@ import './swiper'
 })()
 // 导航区
 ;(function () {
+  // 获取楼层元素
+  const floor = document.querySelector('.floor')
+  // 点击导航 修改 底部边框元素的位置
+  const movedBorder = floor.querySelector('.moved-border')
+  // 获取导航元素
+  const navItems = floor.querySelectorAll('.nav-item')
+  // 绑定事件
+  navItems.forEach((item, key) => {
+    item.key = key
+    item.addEventListener('touchstart', function () {
+      // 切换底部边框元素的位置
+
+      const translateX = this.key * movedBorder.offsetWidth
+      transformCSS(movedBorder, 'translateX', translateX)
+
+      // console.log(translateX)
+    })
+  })
   new Swiper('.container')
 })()
