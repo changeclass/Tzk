@@ -131,6 +131,7 @@ import './swiper'
   const navItems = floor.querySelectorAll('.nav-item')
   const wrapper = floor.querySelector('.swiper-wrapper')
   const container = floor.querySelector('.container')
+  const swiperSlides = floor.querySelectorAll('.swiper-item')
   // 绑定事件
   navItems.forEach((item, key) => {
     item.key = key
@@ -148,6 +149,18 @@ import './swiper'
       end: function () {
         const index = swiper.getIndex()
         transformCSS(movedBorder, 'translateX', index * movedBorder.offsetWidth)
+        // 加载幻灯片的内容
+        setTimeout(() => {
+          const firstSwiperSlide = floor.querySelector('.swiper-item')
+          const hasLoaded = swiperSlides[index].getAttribute('has-loaded')
+          // 没有加载
+          if (hasLoaded == '0') {
+            // ajax请求
+            swiperSlides[index].innerHTML = firstSwiperSlide.innerHTML
+            // 标识当前幻灯片加载完毕
+            swiperSlides[index].setAttribute('has-loaded', 1)
+          }
+        }, 2000)
       }
     }
   })
