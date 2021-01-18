@@ -55,6 +55,7 @@ import Touchscroll from './touchscroll'
     this.startTime = Date.now()
   })
   nav.addEventListener('touchmove', function (e) {
+    e.stopPropagation()
     this._x = e.touches[0].clientX
     let newLeft = this._x - this.x + this.left
     if (newLeft > 0) {
