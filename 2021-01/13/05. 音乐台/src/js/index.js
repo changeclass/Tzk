@@ -1,6 +1,7 @@
 import '../style/index.less'
 import './transformCSS'
 import './swiper'
+import Touchscroll from './touchscroll'
 
 //全局代码
 ;(function () {
@@ -121,47 +122,61 @@ import './swiper'
     loop: true
   })
 })()
-// 导航区
+// 内容区
 ;(function () {
-  // 获取楼层元素
-  const floor = document.querySelector('.floor')
-  // 点击导航 修改 底部边框元素的位置
-  const movedBorder = floor.querySelector('.moved-border')
-  // 获取导航元素
-  const navItems = floor.querySelectorAll('.nav-item')
-  const wrapper = floor.querySelector('.swiper-wrapper')
-  const container = floor.querySelector('.container')
-  const swiperSlides = floor.querySelectorAll('.swiper-item')
-  // 绑定事件
-  navItems.forEach((item, key) => {
-    item.key = key
-    item.addEventListener('touchstart', function () {
-      // 切换底部边框元素的位置
+  const floors = document.querySelectorAll('.floor')
+  floors.forEach((floor) => {
+    // 点击导航 修改 底部边框元素的位置
+    const movedBorder = floor.querySelector('.moved-border')
+    // 获取导航元素
+    const navItems = floor.querySelectorAll('.nav-item')
+    const wrapper = floor.querySelector('.swiper-wrapper')
+    const container = floor.querySelector('.container')
+    const swiperSlides = floor.querySelectorAll('.swiper-item')
+    // 绑定事件
+    navItems.forEach((item, key) => {
+      item.key = key
+      item.addEventListener('touchstart', function () {
+        // 切换底部边框元素的位置
 
-      const translateX = this.key * movedBorder.offsetWidth
-      transformCSS(movedBorder, 'translateX', translateX)
-      swiper.node.switchSlide(this.key)
-      // console.log(translateX)
+        const translateX = this.key * movedBorder.offsetWidth
+        transformCSS(movedBorder, 'translateX', translateX)
+        swiper.node.switchSlide(this.key)
+        // console.log(translateX)
+      })
+    })
+    const swiper = new Swiper(container, {
+      callback: {
+        end: function () {
+          const index = swiper.getIndex()
+          transformCSS(
+            movedBorder,
+            'translateX',
+            index * movedBorder.offsetWidth
+          )
+          // 加载幻灯片的内容
+          setTimeout(() => {
+            const firstSwiperSlide = floor.querySelector('.swiper-item')
+            const hasLoaded = swiperSlides[index].getAttribute('has-loaded')
+            // 没有加载
+            if (hasLoaded == '0') {
+              // ajax请求
+              swiperSlides[index].innerHTML = firstSwiperSlide.innerHTML
+              // 标识当前幻灯片加载完毕
+              swiperSlides[index].setAttribute('has-loaded', 1)
+            }
+          }, 2000)
+        }
+      }
     })
   })
-  const swiper = new Swiper('.container', {
-    callback: {
-      end: function () {
-        const index = swiper.getIndex()
-        transformCSS(movedBorder, 'translateX', index * movedBorder.offsetWidth)
-        // 加载幻灯片的内容
-        setTimeout(() => {
-          const firstSwiperSlide = floor.querySelector('.swiper-item')
-          const hasLoaded = swiperSlides[index].getAttribute('has-loaded')
-          // 没有加载
-          if (hasLoaded == '0') {
-            // ajax请求
-            swiperSlides[index].innerHTML = firstSwiperSlide.innerHTML
-            // 标识当前幻灯片加载完毕
-            swiperSlides[index].setAttribute('has-loaded', 1)
-          }
-        }, 2000)
-      }
-    }
+})()
+
+// 页面滚动
+;(function () {
+  // 内容滚动
+  const touchscroll = new Touchscroll('#app', '#main', {
+    width: 4,
+    bg: 'rgb(52,69,78)'
   })
 })()
