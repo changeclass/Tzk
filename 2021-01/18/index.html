@@ -64,6 +64,41 @@
         line-height: 20vh;
         text-align: center;
       }
+      #big-image-page {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background: white;
+        transform: scale(0);
+        transition: transform 0.5s;
+      }
+      #show-area {
+        width: 100%;
+        height: 90vh;
+        position: relative;
+      }
+      #show-area img {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+      .close {
+        position: absolute;
+        right: 10px;
+        top: 25px;
+        display: block;
+        width: 10px;
+        height: 10px;
+        line-height: 10px;
+        text-align: center;
+        font-size: 28px;
+      }
     </style>
   </head>
   <body>
@@ -74,6 +109,15 @@
         <div class="pull-up-update">加载更多</div>
       </div>
     </main>
+    <div id="big-image-page">
+      <header>
+        大图预览
+        <span class="close">×</span>
+      </header>
+      <section id="show-area">
+        <img id="big-img" src="./img/1.jpg" />
+      </section>
+    </div>
     <script src="js/transformCSS.js"></script>
     <script src="js/tweenAnimation.js"></script>
     <script src="./js/touchscroll.js"></script>
@@ -84,6 +128,10 @@
       var main = document.querySelector('main')
       var content = document.querySelector('#content')
       var pullUpUpdate = document.querySelector('.pull-up-update')
+      var bigImagePage = document.querySelector('#big-image-page')
+      var close = document.querySelector('.close')
+      var bigImage = document.querySelector('#big-img')
+      var isMoving = false
       document.documentElement.addEventListener(
         'touchstart',
         function (e) {
@@ -175,16 +223,50 @@
               main.offsetHeight
             //获取scrollBar元素
             var scrollBar = document.querySelector('.scroll-bar')
-            console.log(scrollBarTranslateY)
+
             clearInterval(scrollBar.timer['translateY'])
             clearInterval(content.timer['translateY'])
 
             transformCSS(scrollBar, 'translateY', scrollBarTranslateY) //
-            console.log(transformCSS(scrollBar, 'translateY'))
           }
+
           // 检测是否已出现
           pullUpUpdate.scale = 0
         }
+      })
+      var lis = document.querySelectorAll('li')
+      var imgs = imgList.querySelectorAll('img')
+      //   imgs.forEach((img) => {
+      //     img.addEventListener('touchend', function (e) {
+      //       if (isMoving) return
+      //       var src = this.getAttribute('data-src')
+      //       bigImage.src = src
+      //       var x = e.changedTouches[0].clientX
+      //       var y = e.changedTouches[0].clientY
+      //       bigImagePage.style.transformOrigin = `${x}px ${y}px`
+      //       transformCSS(bigImagePage, 'scale', 1)
+      //     })
+      //   })
+      imgList.addEventListener('touchend', function (e) {
+        if (isMoving) return
+        if (e.target.nodeName === 'IMG') {
+          var src = e.target.dataset.src
+          bigImage.src = src
+          var x = e.changedTouches[0].clientX
+          var y = e.changedTouches[0].clientY
+          bigImagePage.style.transformOrigin = `${x}px ${y}px`
+          transformCSS(bigImagePage, 'scale', 1)
+        }
+      })
+      close.addEventListener('touchstart', function () {
+        transformCSS(bigImagePage, 'scale', 0)
+      })
+      // 单独给内容绑定事件修改 isMoving
+      main.addEventListener('touchmove', function () {
+        isMoving = true
+      })
+      main.addEventListener('touchend', function () {
+        isMoving = false
       })
     </script>
   </body>
