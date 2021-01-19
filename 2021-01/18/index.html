@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        ul{
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        header{
+            height: 10vh;
+            background: rgb(0,0,0);
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            line-height: 10vh;
+            position: relative;
+            z-index: 10;
+
+        }
+        main{
+            height: 90vh;
+
+        }
+        #content{
+            position: relative;
+            overflow: hidden;
+        }
+        li{
+            width: 46vw;
+            height: 46vw;
+            float: left;
+            margin: 2vw;
+            border-radius: 5vw;
+            overflow: hidden;
+        }
+        li img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>三国女将</header>
+    <main>
+        <div id="content">
+            <ul id="img-list" >
+            </ul>
+            <div class="pull-up-update">加载更多</div>
+        </div>
+    </main>
+    <script src="js/transformCSS.js"></script>
+    <script src="js/tweenAnimation.js"></script>
+    <script src="./js/touchscroll.js"></script>
+    <script>
+        var num = 16
+        var page = 1
+        var imgList = document.getElementById('img-list')
+        document.documentElement.addEventListener('touchstart',function (e){
+            e.preventDefault()
+        },{
+            passive:false
+        })
+
+        //  触摸滚动
+        new Touchscroll('main','#content')
+        var imgData = []
+        for(var i=0;i<100;i++){
+            imgData.push(`./img/${i%18+1}.jpg`)
+        }
+        function createLi() {
+            var start = (page-1)*16
+            var end = page*num
+            for (var i=start;i<end;i++){
+                var li = document.createElement('li')
+                var img = document.createElement('img')
+                img.src = imgData[i]
+                li.appendChild(img)
+                imgList.appendChild(li)
+            }
+            page++
+        }
+        createLi()
+    </script>
+</body>
+</html>
