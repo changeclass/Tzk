@@ -37,6 +37,9 @@
         }
         #content{
             position: relative;
+
+        }
+        #img-list{
             overflow: hidden;
         }
         li{
@@ -50,6 +53,16 @@
         li img{
             width: 100%;
             display: block;
+        }
+        .pull-up-update{
+            position: absolute;
+            width: 100%;
+            height: 20vh;
+            bottom: -20vh;
+            font-size: 20px;
+            line-height: 20vh;
+            text-align: center;
+
         }
     </style>
 </head>
@@ -71,6 +84,7 @@
         var imgList = document.getElementById('img-list')
         var main = document.querySelector('main')
         var content = document.querySelector('#content')
+        var pullUpUpdate = document.querySelector('.pull-up-update')
         document.documentElement.addEventListener('touchstart',function (e){
             e.preventDefault()
         },{
@@ -99,8 +113,6 @@
             lazyLoad()
         }
         createLi()
-        createLi()
-        createLi()
         // main.addEventListener('touchmove',function (){
         //     // 检测li元素是否进入可视区域
         //     lazyLoad()
@@ -116,9 +128,9 @@
                 var translateY = -transformCSS(content,'translateY')
 
                 if(oT <= h+translateY){
-                    if(li.getAttribute('data-loaded')==='1') return
                     // 加载图片
                     var img = li.querySelector('img')
+                    if(img.getAttribute('data-loaded')==='1') return
                     img.src = img.getAttribute('data-src')
                     img.setAttribute('data-loaded',1)
                 }
@@ -128,6 +140,24 @@
         new Touchscroll('main','#content',{
             move: function (){
                 lazyLoad()
+                // 当前
+                var translateY = transformCSS(content,'translateY')
+                // 最小translateY
+                var minTranslateY = main.offsetHeight-content.offsetHeight
+                if(translateY<minTranslateY){
+                    var disY =Math.abs(translateY - minTranslateY)
+                    var PH = pullUpUpdate.offsetHeight
+                    // 滑出了边界 修改元素显示比例
+                    pullUpUpdate.scale = Math.min(disY / PH,1)
+                    transformCSS(pullUpUpdate,'scale',scale)
+                }
+            },
+            end: function () {
+                if(pullUpUpdate.scale>=1){
+                    createLi()
+                }
+                // 检测是否已出现
+                pullUpUpdate.scale = 0
             }
         })
     </script>
