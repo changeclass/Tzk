@@ -141,6 +141,7 @@
               }
               img.onerror = function () {
                 img.src = './img/noimage.png'
+                this.style.opacity = 1
               }
             }, 2000)
             img.setAttribute('data-loaded', 1)
