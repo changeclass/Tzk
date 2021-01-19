@@ -69,14 +69,15 @@
         var num = 16
         var page = 1
         var imgList = document.getElementById('img-list')
+        var main = document.querySelector('main')
+        var content = document.querySelector('#content')
         document.documentElement.addEventListener('touchstart',function (e){
             e.preventDefault()
         },{
             passive:false
         })
 
-        //  触摸滚动
-        new Touchscroll('main','#content')
+
         var imgData = []
         for(var i=0;i<100;i++){
             imgData.push(`./img/${i%18+1}.jpg`)
@@ -87,13 +88,48 @@
             for (var i=start;i<end;i++){
                 var li = document.createElement('li')
                 var img = document.createElement('img')
-                img.src = imgData[i]
+                // img.src = imgData[i]
+                img.setAttribute('data-src',imgData[i])
+                img.setAttribute('data-loaded',0)
                 li.appendChild(img)
                 imgList.appendChild(li)
             }
             page++
+            // 检测懒加载
+            lazyLoad()
         }
         createLi()
+        createLi()
+        createLi()
+        // main.addEventListener('touchmove',function (){
+        //     // 检测li元素是否进入可视区域
+        //     lazyLoad()
+        // })
+        function lazyLoad(){
+            var lis  = document.querySelectorAll('#img-list li')
+            lis.forEach(li=>{
+                // 获取元素相对于父级的偏移量
+                var oT = li.offsetTop
+                // 获取容器元素的高度
+                var h  = main.offsetHeight
+                // 获取滑动的高度
+                var translateY = -transformCSS(content,'translateY')
+
+                if(oT <= h+translateY){
+                    if(li.getAttribute('data-loaded')==='1') return
+                    // 加载图片
+                    var img = li.querySelector('img')
+                    img.src = img.getAttribute('data-src')
+                    img.setAttribute('data-loaded',1)
+                }
+            })
+        }
+        //  触摸滚动
+        new Touchscroll('main','#content',{
+            move: function (){
+                lazyLoad()
+            }
+        })
     </script>
 </body>
 </html>
