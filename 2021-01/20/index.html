@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>音阶导航</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      nav {
+        width: 800px;
+        margin: 100px auto;
+      }
+      li {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border: solid 1px #000;
+        float: left;
+        margin-right: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      li .yinjie {
+        position: absolute;
+        width: 100px;
+        height: 50px;
+        bottom: -50px;
+        left: 0px;
+        background-color: rgba(255, 20, 147, 0.5);
+        transition: bottom 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li data-yinjie="c">
+          男装
+          <div class="yinjie"></div>
+        </li>
+        <li data-yinjie="d">
+          女装
+          <div class="yinjie"></div>
+        </li>
+        <li data-yinjie="e">
+          童装
+          <div class="yinjie"></div>
+        </li>
+        <li data-yinjie="f">
+          箱包
+          <div class="yinjie"></div>
+        </li>
+        <li data-yinjie="g">
+          外设
+          <div class="yinjie"></div>
+        </li>
+        <li data-yinjie="a">
+          电脑
+          <div class="yinjie"></div>
+        </li>
+        <li data-yinjie="b">
+          手机
+          <div class="yinjie"></div>
+        </li>
+      </ul>
+    </nav>
+    <audio src=""></audio>
+
+    <script>
+      //获取li元素
+      var lis = document.querySelectorAll('li')
+      var audio = document.querySelector('audio')
+
+      lis.forEach(function (li) {
+        //事件绑定
+        li.addEventListener('mouseenter', function () {
+          //使当前li中的音阶元素 向上移动
+          var yinjie = li.querySelector('.yinjie')
+          yinjie.style.bottom = 0
+          //获取音符的标识
+          var yue = this.dataset.yinjie
+          //修改audio标签的 src 属性
+          audio.src = './piano/' + yue + '4.mp3'
+          //播放
+          audio.play()
+        })
+
+        //事件绑定
+        li.addEventListener('mouseleave', function () {
+          //使当前li中的音阶元素 向上移动
+          var yinjie = li.querySelector('.yinjie')
+          yinjie.style.bottom = '-50px'
+        })
+      })
+    </script>
+  </body>
+</html>
