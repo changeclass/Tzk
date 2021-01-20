@@ -121,6 +121,8 @@
     <script src="js/transformCSS.js"></script>
     <script src="js/tweenAnimation.js"></script>
     <script src="./js/touchscroll.js"></script>
+    <script src="./js/gesture.js"></script>
+    <script src="./js/touchview.js"></script>
     <script>
       var num = 16
       var page = 1
@@ -236,17 +238,7 @@
       })
       var lis = document.querySelectorAll('li')
       var imgs = imgList.querySelectorAll('img')
-      //   imgs.forEach((img) => {
-      //     img.addEventListener('touchend', function (e) {
-      //       if (isMoving) return
-      //       var src = this.getAttribute('data-src')
-      //       bigImage.src = src
-      //       var x = e.changedTouches[0].clientX
-      //       var y = e.changedTouches[0].clientY
-      //       bigImagePage.style.transformOrigin = `${x}px ${y}px`
-      //       transformCSS(bigImagePage, 'scale', 1)
-      //     })
-      //   })
+
       imgList.addEventListener('touchend', function (e) {
         if (isMoving) return
         if (e.target.nodeName === 'IMG') {
@@ -268,6 +260,9 @@
       main.addEventListener('touchend', function () {
         isMoving = false
       })
+      // 图片旋转缩放
+      new Touchview('#big-img')
     </script>
   </body>
 </html>
+  
