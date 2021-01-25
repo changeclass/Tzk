@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>弹性盒子模型</title>
+    <style>
+      .container {
+        width: 900px;
+        height: 300px;
+        border: 3px solid black;
+        display: flex;
+        /* 主轴对齐方式 */
+        justify-content: space-between;
+        flex-wrap: wrap-reverse;
+      }
+      .container div {
+        width: 120px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div style="background-color: lightgray">盒子1</div>
+      <div style="background-color: lightgreen">盒子2</div>
+      <div style="background-color: lightpink">盒子3</div>
+      <div style="background-color: lightsalmon">盒子4</div>
+      <div style="background-color: lightskyblue">盒子5</div>
+      <div style="background-color: lightseagreen">盒子6</div>
+      <div style="background-color: lightsteelblue">盒子7</div>
+      <div style="background-color: lightyellow">盒子8</div>
+      <div style="background-color: lightcyan">盒子9</div>
+    </div>
+  </body>
+</html>

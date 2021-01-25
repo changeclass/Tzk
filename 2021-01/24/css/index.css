@@ -1,0 +1,242 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 14px 'Microsoft YaHei', 'Arial', '黑体', sans-serif;
+  color: #333;
+}
+td,
+th,
+caption {
+  font-size: 14px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 100%;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+img {
+  border: none;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+input,
+textarea,
+select,
+button {
+  font: 14px 'Microsoft YaHei', 'Arial', '黑体', sans-serif;
+}
+table {
+  border-collapse: collapse;
+}
+body,
+html,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+header {
+  width: 100%;
+  height: 37px;
+  background: #FF852A;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+header #logo {
+  width: 15%;
+  height: 37px;
+  display: inline-block;
+}
+header #logo .icontao {
+  line-height: 37px;
+  font-size: 40px;
+  color: white;
+}
+header #search {
+  background: #ff4e22;
+  height: 22px;
+  width: 80%;
+  display: inline-block;
+  position: relative;
+  top: -9px;
+  border-radius: 4px;
+  text-align: center;
+}
+header #search span {
+  color: #f0e0dc;
+  font-size: 12px;
+}
+#container {
+  padding-top: 5%;
+  padding-bottom: 50px;
+}
+#container .swiper-container {
+  height: 120px;
+}
+#container .swiper-container .swiper-wrapper {
+  height: 100%;
+  background: #333333;
+}
+#container .swiper-container .swiper-wrapper img {
+  width: 100%;
+}
+#container #nav {
+  box-sizing: border-box;
+  height: 158px;
+  overflow: hidden;
+}
+#container #nav .wrap {
+  position: absolute;
+  white-space: nowrap;
+}
+#container #nav .wrap li {
+  display: inline-block;
+  height: 158px;
+  width: 61px;
+}
+#container #nav .wrap li i {
+  font-size: 70px;
+  display: block;
+}
+#container .juhuasuan {
+  height: 363px;
+  width: 100%;
+  background: #f0e0dc;
+}
+#container .do-you-like {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#container .do-you-like .like-item {
+  width: 46%;
+  margin-bottom: 5px;
+  position: relative;
+}
+#container .do-you-like .like-item img {
+  width: 100%;
+}
+#container .do-you-like .like-item .desc > span {
+  height: 40px;
+  overflow: hidden;
+  display: block;
+}
+#container .do-you-like .like-item .info {
+  position: relative;
+  bottom: 0;
+}
+#container .do-you-like .like-item .info .price {
+  color: #ff5500;
+}
+#container .do-you-like .like-item .info .price .price-num {
+  font-size: 18px;
+}
+#container .do-you-like .like-item .info > span {
+  margin-right: 10px;
+}
+#container .pull-up-update {
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+  bottom: -20vh;
+  font-size: 20px;
+  line-height: 20vh;
+  text-align: center;
+}
+footer {
+  height: 100px;
+  width: 100%;
+  background: #4e525e;
+  overflow: hidden;
+  text-align: center;
+}
+footer .btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 20px;
+}
+footer .btns .btn {
+  color: #c3c6ca;
+  background-color: #555965;
+  border: 1px solid #42454d;
+  padding: 0 17px;
+  border-radius: 6px;
+  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+}
+footer span {
+  color: #c3c6ca;
+  text-align: center;
+}
+.flex {
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #f0e0dc;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.flex .flex-item {
+  margin: 0 10px;
+}
+.flex .flex-item i {
+  font-size: 27px;
+  display: block;
+}
+/*# sourceMappingURL=index.css.map */

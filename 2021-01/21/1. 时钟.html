@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      canvas {
+        background-color: #eee;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      var canvas = document.querySelector('canvas')
+      canvas.width = 400
+      canvas.height = 400
+      // 获取画笔
+      var ctx = canvas.getContext('2d')
+      // 绘制圆形
+      ctx.beginPath()
+      ctx.arc(200, 200, 150, 0, (360 / 180) * Math.PI)
+      ctx.stroke()
+      // 移动坐标系
+      ctx.translate(200, 200)
+      ctx.rotate((-90 / 180) * Math.PI)
+      // 绘制表针
+      // 绘制分针
+      ctx.save()
+      for (var i = 0; i < 60; i++) {
+        ctx.rotate((6 / 180) * Math.PI)
+        ctx.beginPath()
+        ctx.lineWidth = 2
+        ctx.moveTo(135, 0)
+        ctx.lineTo(145, 0)
+        ctx.stroke()
+      }
+      ctx.restore()
+      // 绘制分针
+      for (var i = 0; i < 12; i++) {
+        ctx.rotate((30 / 180) * Math.PI)
+        ctx.beginPath()
+        ctx.lineWidth = 3
+        ctx.moveTo(120, 0)
+        ctx.lineTo(145, 0)
+        ctx.stroke()
+      }
+      // ctx.beginPath()
+      // ctx.moveTo(0, 0)
+      // ctx.lineTo(100, 0)
+    </script>
+  </body>
+</html>

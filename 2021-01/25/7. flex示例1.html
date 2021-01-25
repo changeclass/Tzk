@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>弹性盒子模型</title>
+    <style>
+      .container {
+        /* width: 900px; */
+        height: 600px;
+        border: 3px solid black;
+        /* 将当前元素设置为弹性盒子模型的伸缩容器 */
+        display: flex;
+        /* justify-content属性表示项目在主轴的对其方式
+        justify-content: space-between;
+        flex-wrap: wrap; */
+      }
+      .container div {
+        /* width: 20px; */
+        height: 150px;
+        flex: 1;
+      }
+      .container div:nth-child(2) {
+        flex: 2 2 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div style="background-color: lightgray">盒子1</div>
+      <div style="background-color: lightgreen">盒子2</div>
+      <div style="background-color: lightpink">盒子3</div>
+    </div>
+  </body>
+</html>
