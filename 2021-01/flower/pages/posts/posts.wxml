@@ -1,0 +1,13 @@
+<view>
+  <swiper interval="3000" circular="{{true}}" indicator-dots="{{true}}" autoplay="{{true}}">
+    <swiper-item>
+      <image src="/images/bestplayers.png" />
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/lpl.png" />
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/bestplayers.png" />
+    </swiper-item>
+  </swiper>
+</view>

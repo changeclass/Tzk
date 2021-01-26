@@ -1,9 +1,7 @@
 {
-    "pages": [
-        "pages/welcome/welcome"
-    ],
-    "window": {
-        "navigationBarBackgroundColor": "#b3d4db"
-    },
-    "sitemapLocation": "sitemap18.json"
+  "pages": ["pages/welcome/welcome", "pages/posts/posts"],
+  "window": {
+    "navigationBarBackgroundColor": "#c22a1e"
+  },
+  "sitemapLocation": "sitemap18.json"
 }

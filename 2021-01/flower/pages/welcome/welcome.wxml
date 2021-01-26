@@ -1,6 +1,6 @@
 <!-- pages/welcome/welcome.wxml -->
 <view class="container">
-  <image class="avatar" src="/images/avatar/1.png"></image>
+  <l-avatar open-data="{{['userAvatarUrl','userNickName']}}" placement="bottom" size="180" class="l-avatar" />
   <text class='motto'>Hello,小康</text>
   <!-- <button>开启小程序之旅</button> -->
   <view class="journey-container">

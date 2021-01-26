@@ -40,7 +40,7 @@
         "minifyWXSS": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.0.4",
+    "libVersion": "2.14.4",
     "appid": "wx0cab06613467633b",
     "projectname": "flower",
     "debugOptions": {
@@ -49,23 +49,23 @@
     "scripts": {},
     "isGameTourist": false,
     "condition": {
-        "search": {
-            "list": []
-        },
-        "conversation": {
+        "plugin": {
             "list": []
         },
         "game": {
-            "list": []
-        },
-        "plugin": {
             "list": []
         },
         "gamePlugin": {
             "list": []
         },
         "miniprogram": {
-            "list": []
+            "list": [
+                {
+                    "name": "pages/posts/posts",
+                    "pathName": "pages/posts/posts",
+                    "scene": null
+                }
+            ]
         }
     }
 }
