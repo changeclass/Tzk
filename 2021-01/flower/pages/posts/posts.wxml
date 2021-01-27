@@ -10,19 +10,21 @@
       <image src="/images/bestplayers.png" />
     </swiper-item>
   </swiper>
-  <view class="post-container">
-    <view class="post-author-date">
-      <image class="post-author" src="/images/avatar/1.png" />
-      <text class="post-date">Nov 8 2020</text>
+  <block wx:for="{{postList}}">
+    <view class="post-container">
+      <view class="post-author-date">
+        <image class="post-author" src="{{item.avatar}}" />
+        <text class="post-date">{{item.date}}</text>
+      </view>
+      <text class="post-title">{{item.title}}</text>
+      <image class="post-image" src="{{item.imgSrc}}" />
+      <text class="post-content">{{item.content}}</text>
+      <view class="post-like">
+        <l-icon class="post-like-image" name="favor" size="28" color="#666" />
+        <text class="post-like-font">{{item.collection}}</text>
+        <l-icon class="post-like-image" name="eye" size="32" color="#666" />
+        <text class="post-like-font">{{item.reading}}</text>
+      </view>
     </view>
-    <text class="post-title">2020 LPL夏季赛观看指南</text>
-    <image class="post-image" src="/images/lpl.png" />
-    <text class="post-content">撒肯定撒开绿灯撒肯定撒看得见啊十大科技</text>
-    <view class="post-like">
-      <l-icon class="post-like-image" name="favor" size="28" color="#666" />
-      <text class="post-like-font">12</text>
-      <l-icon class="post-like-image" name="eye" size="32" color="#666" />
-      <text class="post-like-font">111</text>
-    </view>
-  </view>
+  </block>
 </view>
