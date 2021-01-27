@@ -10,4 +10,19 @@
       <image src="/images/bestplayers.png" />
     </swiper-item>
   </swiper>
+  <view class="post-container">
+    <view class="post-author-date">
+      <image class="post-author" src="/images/avatar/1.png" />
+      <text class="post-date">Nov 8 2020</text>
+    </view>
+    <text class="post-title">2020 LPL夏季赛观看指南</text>
+    <image class="post-image" src="/images/lpl.png" />
+    <text class="post-content">撒肯定撒开绿灯撒肯定撒看得见啊十大科技</text>
+    <view class="post-like">
+      <image class="post-like-image" src="/images/icon/chat.png" />
+      <text class="post-like-font">12</text>
+      <image class="post-like-image" src="/images/icon/view.png" />
+      <text class="post-like-font">111</text>
+    </view>
+  </view>
 </view>
