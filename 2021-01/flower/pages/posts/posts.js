@@ -47,5 +47,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {}
+  onShareAppMessage: function () {},
+  // 用户点击进入详情页
+  onGoToDetail(event) {
+    // console.log(event)
+    wx.navigateTo({
+      url: '/pages/post-detail/post-detail'
+    })
+  }
 })

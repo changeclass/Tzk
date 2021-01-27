@@ -1,10 +1,14 @@
 {
-  "pages": ["pages/welcome/welcome", "pages/posts/posts"],
-  "window": {
-    "navigationBarBackgroundColor": "#c22a1e"
-  },
-  "sitemapLocation": "sitemap18.json",
-  "usingComponents": {
-    "l-icon": "/miniprogram_npm/lin-ui/icon/index"
-  }
+    "pages": [
+        "pages/welcome/welcome",
+        "pages/posts/posts",
+        "pages/post-detail/post-detail"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#c22a1e"
+    },
+    "sitemapLocation": "sitemap18.json",
+    "usingComponents": {
+        "l-icon": "/miniprogram_npm/lin-ui/icon/index"
+    }
 }
