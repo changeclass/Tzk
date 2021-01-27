@@ -38,19 +38,11 @@ tweenAnimation(el, 'width', 200, 956, 5000, 10, 'linear');
  * @param {String} backEaseOut easeOut linear 变化类型
  * @returns {any}
  */
-function tweenAnimation(
-  el,
-  style,
-  init,
-  end,
-  time,
-  jiange,
-  type
-) {
+function tweenAnimation(el, style, init, end, time, jiange, type) {
   //动画切换的函数集合
   var tween = {
     backEaseOut: function (t, b, c, d, s) {
-      if (s == undefined) s = 1.70158
+      if (s == undefined) s = 0
       return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b
     },
     easeOut: function (t, b, c, d) {

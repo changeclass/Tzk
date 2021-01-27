@@ -1,18 +1,21 @@
 @import url(reset);
-body,html,#app{
+body,
+html,
+#app {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: rgb(242, 242, 242);
 }
-header{
+header {
   width: 100%;
   height: 37px;
-  background: #FF852A;
+  background: #ff852a;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 10;
-  #logo{
+  #logo {
     width: 15%;
     height: 37px;
     .icontao {
@@ -22,7 +25,7 @@ header{
     }
     display: inline-block;
   }
-  #search{
+  #search {
     background: rgb(255, 78, 34);
     height: 22px;
     width: 80%;
@@ -31,30 +34,32 @@ header{
     top: -9px;
     border-radius: 4px;
     text-align: center;
-    span{
+    span {
       color: rgb(240, 224, 220);
       font-size: 12px;
     }
   }
 }
 
-#container{
-  padding-top: 5%;
+#container {
+  padding-top: 2rem;
   padding-bottom: 50px;
-  .swiper-container{
+  .swiper-container {
     height: 120px;
-    .swiper-wrapper{
+    .swiper-wrapper {
       height: 100%;
       background: #333333;
-      img{
+      img {
         width: 100%;
       }
     }
   }
-  #nav{
+  #nav {
     box-sizing: border-box;
     height: 158px;
     overflow: hidden;
+    background: white;
+    margin-bottom: 10px;
     .wrap {
       position: absolute;
       white-space: nowrap;
@@ -62,51 +67,172 @@ header{
         display: inline-block;
         height: 158px;
         width: 61px;
-        i{
-          font-size: 70px;
-          display: block;
+        div{
+          img{
+            height: 48px;
+            width: 61px;
+          }
         }
-      }
 
+      }
     }
   }
-  .juhuasuan{
+  .juhuasuan {
+    width: 375px;
     height: 363px;
-    width: 100%;
-    background: #f0e0dc;
-  }
-  .do-you-like{
+    position: relative;
     display: flex;
-    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
+    .FrameLayout{
+      position: absolute;
+      display: flex;
+      overflow: hidden;
+      margin-left: 9px;
+      margin-right: 9px;
+      width: 357px;
+      height: 363px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      background-color: rgb(255, 255, 255);
+      left: 0;
+      top: 0;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding-bottom: 10px
+      .jhs-item{
+        display: flex;
+        overflow: hidden;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 50%;
+        div:nth-child(1){
+          height: 20px;
+          width: 175px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-image: url("https://file.acs.pw/picGo/2021/1/27/20d9ee8d127814c9e4cb105cc803c7c9.png");
+          margin-top: 9px;
+        }
+        .item{
+          width: 40%;
+          height: 80%;
+          //background: #ff4e22;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          p{
+            color: rgb(254, 78, 80);
+            font-size: 13px;
+            font-weight: bold;
+          }
+          .mask{
+            position: absolute;
+            height: 100%;
+            margin-left: 1px;
+            width: 100%;
+            background-color: rgba(214, 67, 0, 0.05);
+            left: 0px;
+            top: 0px;
+            overflow: hidden;
+          }
+          img{
+            width: 100%;
+          }
+        }
+      }
+      .jhs-item:nth-child(1){
+        div:nth-child(1){
+
+          background-image: url("https://file.acs.pw/picGo/2021/1/27/20d9ee8d127814c9e4cb105cc803c7c9.png");
+
+        }
+      }
+      .jhs-item:nth-child(2),.jhs-item:nth-child(3){
+        div:nth-child(1){
+
+          background-image: url("https://file.acs.pw/picGo/2021/1/27/57972d3bd76c7b2daa599134d9d12200.png");
+
+        }
+      }
+      .jhs-item:nth-child(4){
+        div:nth-child(1){
+
+          background-image: url("https://file.acs.pw/picGo/2021/1/27/88917735d878a3c72718e17d0b6cf37e.png");
+
+        }
+      }
+      .jhs-item:nth-child(5){
+        div:nth-child(1){
+
+          background-image: url("https://file.acs.pw/picGo/2021/1/27/9b7be426ec7c4d1f3d88a4531e0e01c0.png");
+
+        }
+      }
+      .jhs-item:nth-child(6){
+        div:nth-child(1){
+
+          background-image: url("https://file.acs.pw/picGo/2021/1/27/45b0a4ee77a851b8c4d83741f489e469.png");
+
+        }
+      }
+    }
+    .corner{
+      height: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0);
+      background: white;
+      width: 357px;
+      position: absolute;
+      bottom: 8px;
+      margin-left: 9px;
+      margin-right: 9px;
+      display: flex;
+      text-align: center;
+      p{
+        width: 30%;
+        line-height: 50px;
+        font-weight: bold;
+        margin: 0 auto;
+      }
+      div{
+        width: 70%;
+        line-height: 50px;
+      }
+    }
+  }
+  .do-you-like {
+    display: flex;
+    margin: 0 10px;
     flex-wrap: wrap;
     justify-content: space-between;
-
-    .like-item{
+    .like-item {
       width: 46%;
       //height: 260px;
       //background: #FF852A;
       margin-bottom: 5px;
       position: relative;
-      img{
+      img {
         width: 100%;
       }
-      .desc{
-        >span{
+      .desc {
+        > span {
           height: 40px;
           overflow: hidden;
           display: block;
         }
       }
-      .info{
+      .info {
         position: relative;
         bottom: 0;
-        .price{
+        .price {
           color: #ff5500;
-          .price-num{
+          .price-num {
             font-size: 18px;
           }
         }
-        >span{
+        > span {
           margin-right: 10px;
         }
       }
@@ -122,18 +248,18 @@ header{
     text-align: center;
   }
 }
-footer{
+footer {
   height: 100px;
   width: 100%;
   background: rgb(78, 82, 94);
   overflow: hidden;
   text-align: center;
-  .btns{
+  .btns {
     display: flex;
     justify-content: space-between;
     margin: 15px 20px;
 
-    .btn{
+    .btn {
       color: rgb(195, 198, 202);
       background-color: rgb(85, 89, 101);
       border: 1px solid rgb(66, 69, 77);
@@ -144,12 +270,12 @@ footer{
       line-height: 35px;
     }
   }
-  span{
+  span {
     color: rgb(195, 198, 202);
     text-align: center;
   }
 }
-.flex{
+.flex {
   height: 50px;
   width: 100%;
   position: absolute;
@@ -158,9 +284,9 @@ footer{
   display: flex;
   justify-content: space-between;
   text-align: center;
-  .flex-item{
+  .flex-item {
     margin: 0 10px;
-    i{
+    i {
       font-size: 27px;
       display: block;
     }

@@ -84,11 +84,12 @@ html,
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: #f2f2f2;
 }
 header {
   width: 100%;
   height: 37px;
-  background: #FF852A;
+  background: #ff852a;
   position: absolute;
   left: 0;
   top: 0;
@@ -119,7 +120,7 @@ header #search span {
   font-size: 12px;
 }
 #container {
-  padding-top: 5%;
+  padding-top: 2rem;
   padding-bottom: 50px;
 }
 #container .swiper-container {
@@ -136,6 +137,8 @@ header #search span {
   box-sizing: border-box;
   height: 158px;
   overflow: hidden;
+  background: white;
+  margin-bottom: 10px;
 }
 #container #nav .wrap {
   position: absolute;
@@ -146,14 +149,113 @@ header #search span {
   height: 158px;
   width: 61px;
 }
-#container #nav .wrap li i {
-  font-size: 70px;
-  display: block;
+#container #nav .wrap li div img {
+  height: 48px;
+  width: 61px;
 }
 #container .juhuasuan {
+  width: 375px;
   height: 363px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  padding: 30px 0;
+}
+#container .juhuasuan .FrameLayout {
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  margin-left: 9px;
+  margin-right: 9px;
+  width: 357px;
+  height: 363px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: #ffffff;
+  left: 0;
+  top: 0;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#container .juhuasuan .FrameLayout .jhs-item {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 50%;
+}
+#container .juhuasuan .FrameLayout .jhs-item div:nth-child(1) {
+  height: 20px;
+  width: 175px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url("https://file.acs.pw/picGo/2021/1/27/20d9ee8d127814c9e4cb105cc803c7c9.png");
+  margin-top: 9px;
+}
+#container .juhuasuan .FrameLayout .jhs-item .item {
+  width: 40%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+#container .juhuasuan .FrameLayout .jhs-item .item p {
+  color: #fe4e50;
+  font-size: 13px;
+  font-weight: bold;
+}
+#container .juhuasuan .FrameLayout .jhs-item .item .mask {
+  position: absolute;
+  height: 100%;
+  margin-left: 1px;
   width: 100%;
-  background: #f0e0dc;
+  background-color: rgba(214, 67, 0, 0.05);
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+#container .juhuasuan .FrameLayout .jhs-item .item img {
+  width: 100%;
+}
+#container .juhuasuan .FrameLayout .jhs-item:nth-child(1) div:nth-child(1) {
+  background-image: url("https://file.acs.pw/picGo/2021/1/27/20d9ee8d127814c9e4cb105cc803c7c9.png");
+}
+#container .juhuasuan .FrameLayout .jhs-item:nth-child(2) div:nth-child(1),
+#container .juhuasuan .FrameLayout .jhs-item:nth-child(3) div:nth-child(1) {
+  background-image: url("https://file.acs.pw/picGo/2021/1/27/57972d3bd76c7b2daa599134d9d12200.png");
+}
+#container .juhuasuan .FrameLayout .jhs-item:nth-child(4) div:nth-child(1) {
+  background-image: url("https://file.acs.pw/picGo/2021/1/27/88917735d878a3c72718e17d0b6cf37e.png");
+}
+#container .juhuasuan .FrameLayout .jhs-item:nth-child(5) div:nth-child(1) {
+  background-image: url("https://file.acs.pw/picGo/2021/1/27/9b7be426ec7c4d1f3d88a4531e0e01c0.png");
+}
+#container .juhuasuan .FrameLayout .jhs-item:nth-child(6) div:nth-child(1) {
+  background-image: url("https://file.acs.pw/picGo/2021/1/27/45b0a4ee77a851b8c4d83741f489e469.png");
+}
+#container .juhuasuan .corner {
+  height: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0);
+  background: white;
+  width: 357px;
+  position: absolute;
+  bottom: 8px;
+  margin-left: 9px;
+  margin-right: 9px;
+  display: flex;
+  text-align: center;
+}
+#container .juhuasuan .corner p {
+  width: 30%;
+  line-height: 50px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+#container .juhuasuan .corner div {
+  width: 70%;
+  line-height: 50px;
 }
 #container .do-you-like {
   display: flex;
