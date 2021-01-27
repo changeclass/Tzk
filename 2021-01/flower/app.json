@@ -3,5 +3,8 @@
   "window": {
     "navigationBarBackgroundColor": "#c22a1e"
   },
-  "sitemapLocation": "sitemap18.json"
+  "sitemapLocation": "sitemap18.json",
+  "usingComponents": {
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index"
+  }
 }

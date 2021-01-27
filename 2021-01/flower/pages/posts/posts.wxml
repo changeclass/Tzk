@@ -19,9 +19,9 @@
     <image class="post-image" src="/images/lpl.png" />
     <text class="post-content">撒肯定撒开绿灯撒肯定撒看得见啊十大科技</text>
     <view class="post-like">
-      <image class="post-like-image" src="/images/icon/chat.png" />
+      <l-icon class="post-like-image" name="favor" size="28" color="#666" />
       <text class="post-like-font">12</text>
-      <image class="post-like-image" src="/images/icon/view.png" />
+      <l-icon class="post-like-image" name="eye" size="32" color="#666" />
       <text class="post-like-font">111</text>
     </view>
   </view>

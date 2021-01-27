@@ -57,8 +57,6 @@ swiper image {
   margin-left: 20rpx;
 }
 .post-container .post-like .post-like-image {
-  width: 32rpx;
-  height: 32rpx;
   margin-right: 16rpx;
 }
 .post-container .post-like .post-like-font {
