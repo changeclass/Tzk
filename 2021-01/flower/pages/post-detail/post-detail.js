@@ -59,15 +59,26 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {},
+  // 分享事件
+  onShare() {
+    wx.showActionSheet({
+      itemList: ['分享到qq']
+    })
+  },
   // 收藏事件
-  onCollect() {
+  async onCollect() {
     // 未收藏
     const postsCollected = this._postsCollected
-    postsCollected[this._pid] = !this.data.collected
+    const flag = !this.data.collected
+    postsCollected[this._pid] = flag
 
     wx.setStorageSync('posts_collected', postsCollected)
     this.setData({
-      collected: !this.data.collected
+      collected: flag
+    })
+    wx.showToast({
+      title: flag ? '收藏成功' : '取消收藏',
+      duration: 2000
     })
   }
 })
