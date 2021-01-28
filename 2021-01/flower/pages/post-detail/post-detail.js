@@ -1,4 +1,5 @@
 import { postList } from '../../data/data.js'
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -21,10 +22,12 @@ Page({
     this._postsCollected = postsCollected
     const collected = postsCollected[this._pid] || false
     const _mgr = wx.getBackgroundAudioManager()
+
     this.setData({
       postData,
       collected,
-      _mgr
+      _mgr,
+      isPlaying: app.gIsPlayingMusic
     })
     _mgr.onPlay(this.onMusicStart)
     _mgr.onPause(this.onMusicStop)
@@ -92,7 +95,7 @@ Page({
     const musicData = this.data.postData.music
     mgr.src = musicData.url
     mgr.title = musicData.title
-
+    app.gIsPlayingMusic = true
     this.setData({
       isPlaying: true
     })
@@ -100,8 +103,9 @@ Page({
   // 停止音乐事件
   onMusicStop() {
     const mgr = this.data._mgr
-    mgr.pasue()
-    console.log(111)
+    mgr.pause()
+    app.gIsPlayingMusic = false
+
     this.setData({
       isPlaying: false
     })
