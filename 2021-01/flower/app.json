@@ -28,7 +28,8 @@
   },
   "sitemapLocation": "sitemap18.json",
   "usingComponents": {
-    "l-icon": "/miniprogram_npm/lin-ui/icon/index"
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "post": "/components/post/index"
   },
   "requiredBackgroundModes": ["audio"]
 }
