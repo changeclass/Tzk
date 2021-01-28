@@ -20,10 +20,14 @@ Page({
     const postsCollected = wx.getStorageSync('posts_collected')
     this._postsCollected = postsCollected
     const collected = postsCollected[this._pid] || false
+    const _mgr = wx.getBackgroundAudioManager()
     this.setData({
       postData,
-      collected
+      collected,
+      _mgr
     })
+    _mgr.onPlay(this.onMusicStart)
+    _mgr.onPause(this.onMusicStop)
   },
 
   /**
@@ -84,18 +88,20 @@ Page({
   },
   // 开始音乐事件
   onMusicStart() {
-    const mgr = wx.getBackgroundAudioManager()
+    const mgr = this.data._mgr
     const musicData = this.data.postData.music
     mgr.src = musicData.url
     mgr.title = musicData.title
+
     this.setData({
       isPlaying: true
     })
   },
   // 停止音乐事件
   onMusicStop() {
-    const mgr = wx.getBackgroundAudioManager()
-    mgr.stop()
+    const mgr = this.data._mgr
+    mgr.pasue()
+    console.log(111)
     this.setData({
       isPlaying: false
     })
