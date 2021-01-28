@@ -1,0 +1,5 @@
+<view class="container">
+  <text>正在热映</text>
+  <text>更多</text>
+  <movie></movie>
+</view>
