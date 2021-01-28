@@ -6,6 +6,7 @@ Page({
   data: {
     postData: {},
     collected: false,
+    isPlaying: false,
     _pid: null,
     _postsCollected: {}
   },
@@ -81,10 +82,22 @@ Page({
       duration: 2000
     })
   },
-  onMusic() {
+  // 开始音乐事件
+  onMusicStart() {
     const mgr = wx.getBackgroundAudioManager()
     const musicData = this.data.postData.music
     mgr.src = musicData.url
     mgr.title = musicData.title
+    this.setData({
+      isPlaying: true
+    })
+  },
+  // 停止音乐事件
+  onMusicStop() {
+    const mgr = wx.getBackgroundAudioManager()
+    mgr.stop()
+    this.setData({
+      isPlaying: false
+    })
   }
 })
