@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    postData: {}
+    postData: {},
+    _pid: null
   },
 
   /**
@@ -12,7 +13,7 @@ Page({
    */
   onLoad: function (options) {
     const postData = postList[options.pid]
-    
+    this._pid = options.pid
     this.setData({
       postData
     })
@@ -51,5 +52,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {}
+  onShareAppMessage: function () {},
+  // 收藏事件
+  onCollect() {
+    // 未收藏
+    const postsCollected = {}
+    postsCollected[this._pid] = true
+    wx.setStorageSync('posts_collected', postsCollected)
+  }
 })
