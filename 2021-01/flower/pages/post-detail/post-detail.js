@@ -17,9 +17,9 @@ Page({
    */
   onLoad: function (options) {
     const postData = postList[options.pid]
-    this._pid = options.pid
+    this.data._pid = options.pid
     const postsCollected = wx.getStorageSync('posts_collected')
-    this._postsCollected = postsCollected
+    this.data._postsCollected = postsCollected
     const collected = postsCollected[this._pid] || false
     const _mgr = wx.getBackgroundAudioManager()
 
@@ -27,12 +27,19 @@ Page({
       postData,
       collected,
       _mgr,
-      isPlaying: app.gIsPlayingMusic
+      isPlaying: this.currentMusicIsPlaying()
     })
     _mgr.onPlay(this.onMusicStart)
     _mgr.onPause(this.onMusicStop)
   },
 
+  currentMusicIsPlaying() {
+    console.log(app.gIsPlayingMusic, app.gIsPlayingPostId)
+    if (app.gIsPlayingMusic && app.gIsPlayingPostId === this.data._pid) {
+      return true
+    }
+    return false
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -76,9 +83,9 @@ Page({
   // 收藏事件
   async onCollect() {
     // 未收藏
-    const postsCollected = this._postsCollected
+    const postsCollected = this.data._postsCollected
     const flag = !this.data.collected
-    postsCollected[this._pid] = flag
+    postsCollected[this.data._pid] = flag
 
     wx.setStorageSync('posts_collected', postsCollected)
     this.setData({
@@ -96,6 +103,7 @@ Page({
     mgr.src = musicData.url
     mgr.title = musicData.title
     app.gIsPlayingMusic = true
+    app.gIsPlayingPostId = this.data._pid
     this.setData({
       isPlaying: true
     })
@@ -105,7 +113,7 @@ Page({
     const mgr = this.data._mgr
     mgr.pause()
     app.gIsPlayingMusic = false
-
+    app.gIsPlayingPostId = -1
     this.setData({
       isPlaying: false
     })

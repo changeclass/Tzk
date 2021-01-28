@@ -1,14 +1,10 @@
 <view>
   <swiper interval="3000" circular="{{true}}" indicator-dots="{{true}}" autoplay="{{true}}">
-    <swiper-item>
-      <image src="/images/bestplayers.png" />
-    </swiper-item>
-    <swiper-item>
-      <image src="/images/lpl.png" />
-    </swiper-item>
-    <swiper-item>
-      <image src="/images/bestplayers.png" />
-    </swiper-item>
+    <block wx:for="{{postList}}" wx:key="postId">
+      <swiper-item>
+        <image bind:tap="onGoToDetail" data-id="{{item.postId}}" src="{{item.imgSrc}}" />
+      </swiper-item>
+    </block>
   </swiper>
   <block wx:for="{{postList}}" wx:key="postId">
     <view class="post-container" bind:tap="onGoToDetail" data-id="{{item.postId}}">
