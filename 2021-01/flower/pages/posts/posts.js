@@ -51,8 +51,9 @@ Page({
   // 用户点击进入详情页
   onGoToDetail(event) {
     // console.log(event)
+    const pid = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/post-detail/post-detail'
+      url: `/pages/post-detail/post-detail?pid=${pid}`
     })
   }
 })
