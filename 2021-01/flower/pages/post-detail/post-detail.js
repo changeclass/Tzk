@@ -5,7 +5,9 @@ Page({
    */
   data: {
     postData: {},
-    _pid: null
+    collected: false,
+    _pid: null,
+    _postsCollected: {}
   },
 
   /**
@@ -14,8 +16,12 @@ Page({
   onLoad: function (options) {
     const postData = postList[options.pid]
     this._pid = options.pid
+    const postsCollected = wx.getStorageSync('posts_collected')
+    this._postsCollected = postsCollected
+    const collected = postsCollected[this._pid] || false
     this.setData({
-      postData
+      postData,
+      collected
     })
   },
 
@@ -56,8 +62,12 @@ Page({
   // 收藏事件
   onCollect() {
     // 未收藏
-    const postsCollected = {}
-    postsCollected[this._pid] = true
+    const postsCollected = this._postsCollected
+    postsCollected[this._pid] = !this.data.collected
+
     wx.setStorageSync('posts_collected', postsCollected)
+    this.setData({
+      collected: !this.data.collected
+    })
   }
 })
