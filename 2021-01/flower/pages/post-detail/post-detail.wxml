@@ -1,7 +1,7 @@
 <!-- pages/post-detail/post-detail.wxml -->
 <view class="container">
   <image class="head-image" src="{{postData.imgSrc}}" />
-  <image class="audio" src="/images/music/music-start.png" />
+  <image bind:tap="onMusic" class="audio" src="/images/music/music-start.png" />
   <view class="author-date">
     <image class="avatar" src="{{postData.avatar}}" />
     <text class="author">{{postData.author}}</text>

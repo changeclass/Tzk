@@ -80,5 +80,11 @@ Page({
       title: flag ? '收藏成功' : '取消收藏',
       duration: 2000
     })
+  },
+  onMusic() {
+    const mgr = wx.getBackgroundAudioManager()
+    const musicData = this.data.postData.music
+    mgr.src = musicData.url
+    mgr.title = musicData.title
   }
 })
