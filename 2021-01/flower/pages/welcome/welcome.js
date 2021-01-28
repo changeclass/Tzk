@@ -5,8 +5,7 @@ Page({
    */
   data: {},
   onTap: function () {
-    console.log('被点击拉！！')
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/posts/posts'
     })
   },

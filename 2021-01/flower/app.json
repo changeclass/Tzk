@@ -9,14 +9,20 @@
     "navigationBarBackgroundColor": "#c22a1e"
   },
   "tabBar": {
-    "list": [ 
+    "selectedColor": "#333",
+    "color": "#999",
+    "list": [
       {
         "text": "阅读",
-        "pagePath": "pages/posts/posts"
+        "pagePath": "pages/posts/posts",
+        "iconPath": "/images/tab/post.png",
+        "selectedIconPath": "/images/tab/post@highlight.png"
       },
       {
         "text": "电影",
-        "pagePath": "pages/movies/movies"
+        "pagePath": "pages/movies/movies",
+        "iconPath": "/images/tab/movie.png",
+        "selectedIconPath": "/images/tab/movie@highlight.png"
       }
     ]
   },
