@@ -1,1 +1,77 @@
 /* pages/post-detail/post-detail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.container .head-image {
+  height: 460rpx;
+  width: 100%;
+}
+.container .author-date {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  align-items: center;
+}
+.container .author-date .avatar {
+  width: 64rpx;
+  height: 64rpx;
+}
+.container .author-date .author {
+  font-size: 30rpx;
+  font-weight: 300;
+  margin-left: 20rpx;
+  color: #666;
+}
+.container .author-date .const-text {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+.container .author-date .date {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 20rpx;
+}
+.container .title {
+  margin-left: 40rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-top: 30rpx;
+  color: #4b556c;
+  letter-spacing: 2px;
+}
+.container .tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .tool .circle {
+  width: 660rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.container .tool .circle image {
+  width: 90rpx;
+  height: 90rpx;
+}
+.container .tool .circle .collection-image {
+  margin-right: 30rpx;
+}
+.container .tool .horizon {
+  width: 660rpx;
+  height: 1px;
+  background-color: #e5e5e5;
+  position: absolute;
+  z-index: -99;
+}
+.container .detail {
+  color: #666;
+  margin: 20rpx 30rpx 0 30rpx;
+  line-height: 44rpx;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}
