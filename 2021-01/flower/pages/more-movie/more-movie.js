@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movies: []
+    movies: [],
+    _type: null
   },
 
   /**
@@ -21,6 +22,7 @@ Page({
       },
       success: (res) => {
         this.setData({
+          _type: type,
           movies: res.data.subjects
         })
       }
@@ -55,7 +57,22 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {},
+  onReachBottom: function () {
+    wx.showNavigationBarLoading()
+    wx.request({
+      url: app.gBaseUrl + this.data._type,
+      data: {
+        start: this.data.movies.length,
+        count: 12
+      },
+      success: (res) => {
+        this.setData({
+          movies: this.data.movies.concat(res.data.subjects)
+        })
+        wx.hideNavigationBarLoading()
+      }
+    })
+  },
 
   /**
    * 用户点击右上角分享
