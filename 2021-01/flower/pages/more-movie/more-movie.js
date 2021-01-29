@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const type = options.type
+    this.data._type = options.type
     wx.request({
       url: app.gBaseUrl + type,
       data: {
@@ -22,7 +22,6 @@ Page({
       },
       success: (res) => {
         this.setData({
-          _type: type,
           movies: res.data.subjects
         })
       }
@@ -32,7 +31,24 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+    let title = ''
+    console.log(this.data._type)
+    switch (this.data._type) {
+      case 'in_theaters':
+        title = '正在热映'
+        break
+      case 'coming_soon':
+        title = '未来上映'
+        break
+      case 'top250':
+        title = 'Top250'
+        break
+    }
+    wx.setNavigationBarTitle({
+      title
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示
