@@ -1,4 +1,4 @@
 <!-- pages/movies/movies.wxml -->
-<movie-list title="即将上映" f-class="movie-list"></movie-list>
-<movie-list title="热门" f-class="movie-list"></movie-list>
-<movie-list title="top250"></movie-list>
+<movie-list movies="{{inTheaters}}" title="即将上映" f-class="movie-list"></movie-list>
+<movie-list movies="{{comingSoon}}" title="热门" f-class="movie-list"></movie-list>
+<movie-list movies="{{top250}}" title="top250"></movie-list>
