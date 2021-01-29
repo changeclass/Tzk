@@ -14,3 +14,9 @@ page {
   padding: 30rpx 28rpx;
   justify-content: space-between;
 }
+/* 用于解决 space-between 两个元素时两端对齐的bug */
+.search-container::after {
+  content: '';
+  /* 设置成一个子元素的宽度 */
+  width: auto;
+}

@@ -1,4 +1,4 @@
-<l-search-bar bind:linconfirm="onConfirm" l-class="ex-search-bar" placeholder="请输入搜索内容" show-cancel="{{false}}" />
+<l-search-bar bind:linconfirm="onConfirm" bind:lincancel="onSearchCancel" l-class="ex-search-bar" placeholder="请输入搜索内容" />
 <view wx:if="{{!searchResult}}">
   <movie-list data-type="in_theaters" bind:tap="onGoToMore" movies="{{inTheaters}}" title="即将上映" f-class="movie-list"></movie-list>
   <movie-list data-type="coming_soon" bind:tap="onGoToMore" movies="{{comingSoon}}" title="热门" f-class="movie-list"></movie-list>
