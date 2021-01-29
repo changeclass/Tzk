@@ -1,4 +1,8 @@
 <view class="container">
   <image class="poster" src="/images/lpl.png" />
   <text class="title">盗梦空间</text>
+  <view class="rate-container">
+    <l-rate disabled="{{true}}" size="22" score="2.2" />
+    <text>2.2</text>
+  </view>
 </view>

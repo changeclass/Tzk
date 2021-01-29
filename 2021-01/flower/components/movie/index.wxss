@@ -16,3 +16,13 @@
   word-break: break-all;
   text-align: center;
 }
+.rate-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 6rpx;
+}
+.rate-container text {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+}
