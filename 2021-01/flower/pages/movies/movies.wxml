@@ -1,4 +1,4 @@
-<l-search-bar l-class="ex-search-bar" placeholder="请输入搜索内容"></l-search-bar>
+<l-search-bar bind:linconfirm="onConfirm" l-class="ex-search-bar" placeholder="请输入搜索内容" show-cancel="{{false}}" />
 <movie-list data-type="in_theaters" bind:tap="onGoToMore" movies="{{inTheaters}}" title="即将上映" f-class="movie-list"></movie-list>
 <movie-list data-type="coming_soon" bind:tap="onGoToMore" movies="{{comingSoon}}" title="热门" f-class="movie-list"></movie-list>
 <movie-list data-type="top250" bind:tap="onGoToMore" movies="{{top250}}" title="top250"></movie-list>

@@ -60,6 +60,18 @@ Page({
       url: '/pages/more-movie/more-movie?type=' + type
     })
   },
+  onConfirm(event) {
+    const q = event.detail.value
+    wx.request({
+      url: app.gBaseUrl + 'search',
+      data: {
+        q
+      },
+      success(data) {
+        console.log(data)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
