@@ -62,13 +62,20 @@ Page({
   },
   onConfirm(event) {
     const q = event.detail.value
+    this.setData({
+      searchResult: true
+    })
     wx.request({
       url: app.gBaseUrl + 'search',
       data: {
         q
       },
-      success(data) {
-        console.log(data)
+      success: (result) => {
+        this.data.searchData = result.data.subjects
+        this.setData({
+          searchData: result.data.subjects
+        })
+        console.log(this.data.searchData)
       }
     })
   },
