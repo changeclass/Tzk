@@ -17,12 +17,13 @@ Component({
    */
   methods: {
     // 用户点击进入详情页
-    onGoToDetail(event) {
+    onTap(event) {
       // console.log(event)
-      const pid = event.currentTarget.dataset.id
-      wx.navigateTo({
-        url: `/pages/post-detail/post-detail?pid=${pid}`
-      })
+      // const pid = event.currentTarget.dataset.id
+      // wx.navigateTo({
+      //   url: `/pages/post-detail/post-detail?pid=${pid}`
+      // })
+      this.triggerEvent('posttap')
     }
   }
 })

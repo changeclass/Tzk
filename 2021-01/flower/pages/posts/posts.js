@@ -13,7 +13,13 @@ Page({
   onLoad: function (options) {
     this.setData({ postList })
   },
-
+  onGoToDetail(event) {
+    console.log(event)
+    const pid = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/post-detail/post-detail?pid=${pid}`
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -7,6 +7,6 @@
     </block>
   </swiper>
   <block wx:for="{{postList}}" wx:key="postId">
-    <post item="{{item}}" />
+    <post bind:posttap="onGoToDetail" item="{{item}}" />
   </block>
 </view>
