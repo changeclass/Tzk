@@ -52,7 +52,21 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {},
+  onPullDownRefresh: function () {
+    wx.request({
+      url: app.gBaseUrl + this.data._type,
+      data: {
+        start: 0,
+        count: 12
+      },
+      success: (res) => {
+        this.setData({
+          movies: res.data.subjects
+        })
+        wx.stopPullDownRefresh()
+      }
+    })
+  },
 
   /**
    * 页面上拉触底事件的处理函数
