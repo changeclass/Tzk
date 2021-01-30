@@ -15,7 +15,8 @@ Page({
   },
   onGoToDetail(event) {
     console.log(event)
-    const pid = event.currentTarget.dataset.id
+    const pid = event.detail.pid || event.currentTarget.dataset.id.toString()
+    console.log(pid, event.currentTarget.dataset.id)
     wx.navigateTo({
       url: `/pages/post-detail/post-detail?pid=${pid}`
     })

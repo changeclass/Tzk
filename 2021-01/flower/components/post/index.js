@@ -23,7 +23,9 @@ Component({
       // wx.navigateTo({
       //   url: `/pages/post-detail/post-detail?pid=${pid}`
       // })
-      this.triggerEvent('posttap')
+      this.triggerEvent('posttap', {
+        pid: this.properties.item.postId
+      })
     }
   }
 })

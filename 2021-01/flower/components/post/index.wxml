@@ -1,4 +1,4 @@
-<view class="post-container" bind:tap="onTap" data-id="{{item.postId}}">
+<view class="post-container" bind:tap="onTap">
   <view class="post-author-date">
     <image class="post-author" src="{{item.avatar}}" />
     <text class="post-date">{{item.date}}</text>
