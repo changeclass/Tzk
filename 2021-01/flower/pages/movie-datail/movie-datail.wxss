@@ -1,1 +1,53 @@
-/* pages/movie-datail/movie-datail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.head-image {
+  width: 100%;
+  height: 320rpx;
+  -webkit-filter: blur(20px);
+}
+.head-img-hover {
+  width: 100%;
+  height: 320rpx;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.main-title {
+  font-size: 38rpx;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-top: 50rpx;
+  margin-left: 40rpx;
+}
+.sub-title {
+  font-size: 28rpx;
+  color: #fff;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+}
+.like {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+}
+.highlight-font {
+  color: #f21146;
+  font-size: 22rpx;
+  margin-right: 10rpx;
+}
+.plain-font {
+  color: #666;
+  font-size: 22rpx;
+  margin-right: 30rpx;
+}
+.movie-img {
+  height: 238rpx;
+  width: 175rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 160rpx;
+}

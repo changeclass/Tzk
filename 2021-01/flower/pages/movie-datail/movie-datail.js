@@ -15,14 +15,18 @@ Page({
     const mid = options.mid
     wx.request({
       url: app.gBaseUrl + 'subject/' + mid,
-      success(result) {
+      success: (result) => {
         this.setData({
           movie: result.data
         })
       }
     })
   },
-
+  onViewPost(event) {
+    wx.previewImage({
+      urls: [this.data.movie.images.large]
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
