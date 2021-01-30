@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     this.data._type = options.type
     wx.request({
-      url: app.gBaseUrl + type,
+      url: app.gBaseUrl + options.type,
       data: {
         start: 0,
         count: 12
