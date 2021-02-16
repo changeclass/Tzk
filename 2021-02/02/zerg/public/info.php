@@ -1,2 +1,3 @@
 <?php
-    phpinfo();
+    echo getenv('APPID');
+    echo phpinfo();
