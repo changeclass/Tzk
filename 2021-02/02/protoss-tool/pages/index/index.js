@@ -2,7 +2,7 @@
 var util = require('../../utils/util.js');
 //获取应用实例
 var app = getApp()
-var baseUrl = 'http://lh.zerg.com/api/v1';
+var baseUrl = 'http://localhost:8080/api/v1';
 Page({
   onLoad: function () {
   },
