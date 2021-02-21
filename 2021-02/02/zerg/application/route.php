@@ -35,3 +35,6 @@ Route::post('api/:version/token/user','api/:version.Token/getToken');
 
 /* 新增收货地址 */
 Route::post('api/:version/address','api/:version.Address/createOrUpdateAddress');
+
+/* 订单相关 */
+Route::post('api/:version/order','api/:version.Order/placeOrder');
