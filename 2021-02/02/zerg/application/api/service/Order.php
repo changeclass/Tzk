@@ -30,6 +30,9 @@ class Order
         }
         /* 创建订单 */
         $orderSnap =$this->snapOrder($status);
+        $order = $this->createOrder($orderSnap);
+        $order['pass'] = true;
+        return $order;
 
     }
     private function createOrder($snap){
