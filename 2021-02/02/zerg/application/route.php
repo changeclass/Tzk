@@ -38,6 +38,7 @@ Route::post('api/:version/address','api/:version.Address/createOrUpdateAddress')
 
 /* 订单相关 */
 Route::post('api/:version/order','api/:version.Order/placeOrder');
+Route::get('api/:version/order/by_user', 'api/:version.Order/getSummaryByUser');
 
 /* 支付相关 */
 Route::post('api/:version/pay/per_order','api/:version.Pay/getPerOrder');
