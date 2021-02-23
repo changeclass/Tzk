@@ -93,7 +93,7 @@ Page({
 
   //未必在点击支付前，先点击一下申请令牌，确保令牌申请成功
   pay: function () {
-    var token = wx.getStorageSync('token');
+    var token = "34c92f272f197b13726e1e01a5041d8e";
     var that = this;
     // that.getPreOrder(token, 'A303256065493535')
     wx.request({
