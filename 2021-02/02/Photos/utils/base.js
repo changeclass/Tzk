@@ -26,6 +26,9 @@ class Base {
             }
         })
     }
+    getDataSet(event, key) {
+        return event.currentTarget.dataset[key]
+    }
 }
 
 export {

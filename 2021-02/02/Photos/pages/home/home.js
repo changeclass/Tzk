@@ -36,5 +36,17 @@ Page({
             })
         })
     },
-
+    onProductsItemTap: function (event) {
+        const id = home.getDataSet(event, 'id')
+        wx.navigateTo({
+            url: '../product/product?id=' + id,
+        })
+    },
+    onThemesItemTap: function (event) {
+        const id = home.getDataSet(event, 'id')
+        const name = home.getDataSet(event, 'name')
+        wx.navigateTo({
+            url: '../theme/theme?id=' + id + '&name=' + name,
+        })
+    }
 })
