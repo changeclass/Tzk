@@ -23,6 +23,15 @@ class Home extends Base {
         }
         this.request(params)
     }
+    getProductsData(callback) {
+        var params = {
+            url: 'product/recent',
+            sCallback: function (res) {
+                callback && callback(res)
+            }
+        }
+        this.request(params)
+    }
 }
 
 export {
